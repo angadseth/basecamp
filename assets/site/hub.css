@@ -1,0 +1,295 @@
+/* Basecamp — pieces that only the hub page uses. */
+
+/* ---- Hero -------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 9vw, 7rem) var(--s-7);
+  border-bottom: 1px solid var(--rule-soft);
+}
+.hero__contours {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--trace);
+  opacity: 0.55;
+  pointer-events: none;
+  mask-image: radial-gradient(120% 90% at 50% 40%, #000 35%, transparent 78%);
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 40%, #000 35%, transparent 78%);
+}
+.hero__inner { position: relative; }
+
+.hero__kicker {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: var(--s-4);
+}
+.hero__title {
+  font-size: var(--t-6);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  font-variation-settings: "wdth" 96;
+  margin-bottom: var(--s-4);
+}
+.hero__title span { color: var(--accent); }
+.hero__lede {
+  font-size: var(--t-2);
+  line-height: 1.42;
+  color: var(--ink-2);
+  max-width: 34ch;
+  margin-bottom: var(--s-5);
+  text-wrap: pretty;
+}
+.hero__lede b { color: var(--ink); font-weight: 600; }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  align-items: center;
+  margin-bottom: var(--s-4);
+}
+.hero__actions .btn { padding: 0.6rem 1rem; font-size: var(--t-0); }
+
+.hero__by {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+}
+
+/* ---- The route: eight courses as an elevation profile ------------------ */
+
+.route {
+  margin: var(--s-7) 0 0;
+  position: relative;
+}
+.route__svg { width: 100%; height: auto; display: block; overflow: visible; }
+
+.route__grid { stroke: var(--rule); stroke-width: 1; stroke-dasharray: 2 5; }
+.route__line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.route__fill { fill: var(--accent); opacity: 0.07; }
+
+.route__stop { cursor: pointer; }
+.route__dot {
+  fill: var(--paper);
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  transition: r var(--dur) var(--ease), fill var(--dur) var(--ease);
+}
+.route__stop:hover .route__dot, .route__stop:focus-visible .route__dot { fill: var(--accent); r: 9; }
+.route__label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  fill: var(--ink);
+  text-anchor: middle;
+}
+.route__stop:hover .route__label { fill: var(--accent); }
+.route__cr {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-3);
+  text-anchor: middle;
+}
+.route__axis {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.route__summit {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  fill: var(--ink-2);
+}
+
+/* On a phone the labels would collide; the dots and the climb still read,
+   and the deck below names every course anyway. */
+@media (max-width: 46rem) {
+  .route__label, .route__cr { display: none; }
+  .route__svg { max-height: 130px; }
+}
+
+.route__cap {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-top: var(--s-3);
+  max-width: 62ch;
+}
+.route__cap b { color: var(--ink-2); font-weight: 400; }
+
+/* ---- Order / prerequisite notes ---------------------------------------- */
+
+.orderlist {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-5) 0;
+  max-width: none;
+  counter-reset: step;
+  display: grid;
+  gap: var(--s-3);
+}
+.orderlist li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: var(--s-4);
+  align-items: baseline;
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--rule-soft);
+  margin: 0;
+}
+.orderlist li::before {
+  content: counter(step);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--accent);
+  font-weight: 600;
+}
+.orderlist b { font-family: var(--font-display); font-weight: 700; }
+.orderlist span { display: block; font-size: var(--t--1); color: var(--ink-3); margin-top: 0.15em; }
+
+/* ---- Score calculator -------------------------------------------------- */
+
+.calc {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  background: var(--paper);
+  overflow: hidden;
+}
+.calc__head {
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--paper-2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.calc__head h3 { font-size: var(--t-1); }
+.calc__pick {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--paper);
+  color: var(--ink);
+}
+.calc__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: var(--s-5);
+  padding: var(--s-5);
+}
+.calc__field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-2);
+  margin-bottom: var(--s-2);
+}
+.calc__field input[type="range"] { width: 100%; accent-color: var(--accent); }
+.calc__field output {
+  font-family: var(--font-mono);
+  font-size: var(--t-1);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.calc__out {
+  border-top: 1px solid var(--rule-soft);
+  padding: var(--s-5);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--s-5);
+  align-items: center;
+  background: var(--paper-2);
+}
+.calc__score {
+  font-family: var(--font-display);
+  font-size: var(--t-5);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+.calc__grade { font-family: var(--font-mono); font-size: var(--t-0); color: var(--ink-2); }
+.calc__grade b { font-size: var(--t-2); color: var(--ink); }
+.calc__note { font-size: var(--t--1); color: var(--ink-3); margin: 0; }
+
+/* ---- Hub grid helper --------------------------------------------------- */
+
+.split {
+  display: grid;
+  gap: var(--s-6);
+  align-items: start;
+}
+@media (min-width: 58rem) {
+  .split { grid-template-columns: 1.15fr 0.85fr; gap: var(--s-7); }
+}
+
+/* ---- The eight identities, as the deck sees them -----------------------
+   Each subject page restates its own accent in assets/subjects/<slug>.css.
+   Here they exist only so the deck reads as eight courses, not one list. */
+
+.scard--maths1   { --card-accent: #4b46c4; }
+.scard--english1 { --card-accent: #c0392b; }
+.scard--ct       { --card-accent: #0b7189; }
+.scard--stats1   { --card-accent: #bf4409; }
+.scard--maths2   { --card-accent: #1d5fbf; }
+.scard--english2 { --card-accent: #a3298a; }
+.scard--python   { --card-accent: #8a6d00; }
+.scard--stats2   { --card-accent: #15704d; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --card-maths1: #8f8bf0; --card-english1: #ff7f70; --card-ct: #4cc4de; --card-stats1: #f0a44a;
+    --card-maths2: #6aa6ff; --card-english2: #e77ac9; --card-python: #ffd75e; --card-stats2: #4fc48c;
+  }
+  :root:not([data-theme="light"]) .scard--maths1   { --card-accent: #8f8bf0; }
+  :root:not([data-theme="light"]) .scard--english1 { --card-accent: #ff7f70; }
+  :root:not([data-theme="light"]) .scard--ct       { --card-accent: #4cc4de; }
+  :root:not([data-theme="light"]) .scard--stats1   { --card-accent: #f0a44a; }
+  :root:not([data-theme="light"]) .scard--maths2   { --card-accent: #6aa6ff; }
+  :root:not([data-theme="light"]) .scard--english2 { --card-accent: #e77ac9; }
+  :root:not([data-theme="light"]) .scard--python   { --card-accent: #ffd75e; }
+  :root:not([data-theme="light"]) .scard--stats2   { --card-accent: #4fc48c; }
+}
+
+:root[data-theme="dark"] .scard--maths1   { --card-accent: #8f8bf0; }
+:root[data-theme="dark"] .scard--english1 { --card-accent: #ff7f70; }
+:root[data-theme="dark"] .scard--ct       { --card-accent: #4cc4de; }
+:root[data-theme="dark"] .scard--stats1   { --card-accent: #f0a44a; }
+:root[data-theme="dark"] .scard--maths2   { --card-accent: #6aa6ff; }
+:root[data-theme="dark"] .scard--english2 { --card-accent: #e77ac9; }
+:root[data-theme="dark"] .scard--python   { --card-accent: #ffd75e; }
+:root[data-theme="dark"] .scard--stats2   { --card-accent: #4fc48c; }
+
+/* The card's own motif, one per subject, drawn in CSS so it costs no bytes. */
+.scard--maths1::before   { background-image: linear-gradient(var(--card-accent) 1px, transparent 1px), linear-gradient(90deg, var(--card-accent) 1px, transparent 1px); background-size: 22px 22px; opacity: 0.07; }
+.scard--english1::before { background-image: repeating-linear-gradient(0deg, transparent 0 25px, color-mix(in oklab, var(--card-accent) 40%, transparent) 25px 26px); opacity: 0.25; }
+.scard--ct::before       { background-image: linear-gradient(var(--card-accent) 1px, transparent 1px), linear-gradient(90deg, var(--card-accent) 1px, transparent 1px); background-size: 40px 40px; opacity: 0.10; }
+.scard--stats1::before   { background-image: repeating-linear-gradient(90deg, color-mix(in oklab, var(--card-accent) 35%, transparent) 0 10px, transparent 10px 24px); background-size: 100% 42%; background-position: 0 100%; background-repeat: no-repeat; opacity: 0.30; }
+.scard--maths2::before   { background-image: linear-gradient(115deg, var(--card-accent) 1px, transparent 1px), linear-gradient(65deg, var(--card-accent) 1px, transparent 1px); background-size: 26px 26px; opacity: 0.09; }
+.scard--english2::before { background: radial-gradient(60% 45% at 50% 0%, color-mix(in oklab, var(--card-accent) 34%, transparent), transparent 70%); opacity: 0.55; }
+.scard--python::before   { background-image: repeating-linear-gradient(0deg, transparent 0 21px, color-mix(in oklab, var(--card-accent) 30%, transparent) 21px 22px); opacity: 0.30; }
+.scard--stats2::before   { background-image: linear-gradient(var(--card-accent) 1px, transparent 1px), linear-gradient(90deg, var(--card-accent) 1px, transparent 1px); background-size: 13px 13px; opacity: 0.06; }
