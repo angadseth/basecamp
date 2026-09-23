@@ -1,0 +1,151 @@
+/* Statistics for Data Science 2 — the lab notebook.
+   Quadrille paper, a hand-numbered feel, and two inks: green for what the data
+   did and purple for what the theory said it would do. The whole course is the
+   argument between those two, so the page never uses either colour for
+   anything else. */
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-text: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, monospace;
+
+  --paper: #f6f8f4;
+  --paper-2: #edf1ea;
+  --paper-3: #e2e8de;
+  --ink: #10170f;
+  --ink-2: #3c473a;
+  --ink-3: #6d786a;
+  --rule: #c8d2c4;
+  --rule-soft: #dae1d6;
+
+  --accent: #15704d;
+  --accent-ink: #f4fff9;
+  --accent-soft: #d5ebe0;
+  --trace: #8ba084;
+
+  /* what the theory predicts */
+  --theory: #6a4c93;
+  --theory-soft: #e3daf0;
+
+  --quad: rgb(21 112 77 / 0.075);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0c110c;
+    --paper-2: #121811;
+    --paper-3: #1a2119;
+    --ink: #e7efe4;
+    --ink-2: #aab5a6;
+    --ink-3: #7a8577;
+    --rule: #263024;
+    --rule-soft: #1c241b;
+
+    --accent: #4fc48c;
+    --accent-ink: #032015;
+    --accent-soft: #12331f;
+    --trace: #6b7a66;
+
+    --theory: #b39ae0;
+    --theory-soft: #2a2140;
+
+    --quad: rgb(79 196 140 / 0.07);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0c110c;
+  --paper-2: #121811;
+  --paper-3: #1a2119;
+  --ink: #e7efe4;
+  --ink-2: #aab5a6;
+  --ink-3: #7a8577;
+  --rule: #263024;
+  --rule-soft: #1c241b;
+
+  --accent: #4fc48c;
+  --accent-ink: #032015;
+  --accent-soft: #12331f;
+  --trace: #6b7a66;
+
+  --theory: #b39ae0;
+  --theory-soft: #2a2140;
+
+  --quad: rgb(79 196 140 / 0.07);
+}
+
+/* Fine quadrille — a lab book's 5mm squares. */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--quad) 1px, transparent 1px),
+    linear-gradient(90deg, var(--quad) 1px, transparent 1px);
+  background-size: 18px 18px, 18px 18px;
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 92%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Fraunces set soft and a little wonky, the way a lab book's headings look. */
+h1, h2, h3 {
+  font-variation-settings: "SOFT" 30, "WONK" 1;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.shero__title { font-variation-settings: "SOFT" 40, "WONK" 1; }
+.chapter__no { font-family: var(--font-mono); font-weight: 500; }
+
+/* ---- The limit-theorem widget ------------------------------------------ */
+
+.clt { display: grid; gap: var(--s-5); }
+@media (min-width: 52rem) { .clt { grid-template-columns: 1.15fr 0.85fr; } }
+
+.clt__plot {
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  background: var(--paper);
+  padding: var(--s-3);
+}
+.clt__plot svg { width: 100%; height: auto; display: block; overflow: visible; }
+.clt__bar { fill: var(--accent); opacity: 0.55; }
+.clt__theory { fill: none; stroke: var(--theory); stroke-width: 2.4; }
+.clt__axis { stroke: var(--ink-3); stroke-width: 1; }
+.clt__lab { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-3); }
+
+.clt__key {
+  display: flex;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-top: var(--s-3);
+}
+.clt__key span { display: inline-flex; align-items: center; gap: var(--s-2); }
+.clt__key i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+.clt__key i.is-data { background: var(--accent); opacity: 0.7; }
+.clt__key i.is-theory { background: var(--theory); }
+
+.clt__pick { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-bottom: var(--s-4); }
+.clt__pick button {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.clt__pick button[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.clt__read b { color: var(--accent); }
+.clt__read i { color: var(--theory); font-style: normal; font-weight: 600; }
