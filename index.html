@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Basecamp: the Foundation field guide (IIT Madras BS in Data Science)</title>
+<meta name="description" content="All eight Foundation-level courses of the IIT Madras BS in one place. What each course actually asks, the grading formula now that GAA counts for zero, the Sep 2026 exam dates, and every resource worth opening.">
+<meta name="author" content="Angad Jangir">
+<meta name="theme-color" content="#f4f1e9">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Basecamp: the Foundation field guide">
+<meta property="og:description" content="Eight courses stand between you and the Diploma. What each one asks, how it is graded, and every resource worth opening.">
+<meta property="og:url" content="https://angadseth.github.io/basecamp/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("basecamp.theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="assets/site/tokens.css">
+<link rel="stylesheet" href="assets/site/layout.css">
+<link rel="stylesheet" href="assets/site/components.css">
+<link rel="stylesheet" href="assets/site/hub.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the guide</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Basecamp, back to the top">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="var(--ink-3)" stroke-width="2.4">
+          <path d="M32 58c14 0 24-7 24-14S46 30 32 30 8 37 8 44s10 14 24 14Z"/>
+          <path d="M32 47c8 0 14-4 14-7s-6-7-14-7-14 4-14 7 6 7 14 7Z"/>
+        </g>
+        <path d="M32 6v28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 7l16 6-16 6z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Basecamp</span>
+    </a>
+    <span class="brand__ed">Foundation level · Sep 2026 edition</span>
+    <nav class="top__links" aria-label="Site">
+      <a class="btn" href="#subjects"><span class="btn__label">Subjects</span></a>
+      <a class="btn" href="#rules"><span class="btn__label">How it is graded</span></a>
+      <button class="btn" id="theme-btn" type="button" aria-label="Change colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2v14a7 7 0 0 1 0-14z"/></svg>
+        <span id="theme-txt">Auto</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <svg id="contours" class="hero__contours" aria-hidden="true" preserveAspectRatio="xMidYMid slice"></svg>
+  <div class="wrap hero__inner">
+    <p class="hero__kicker">IIT&nbsp;Madras BS in Data Science · Foundation level</p>
+    <h1 class="hero__title">Base<span>camp</span></h1>
+    <p class="hero__lede">
+      Eight courses stand between you and the Diploma. This is what each one
+      <b>actually</b> asks, how it is graded now that weekly assignments carry
+      <b>zero</b> marks, and every resource worth opening.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary" href="#subjects">Pick a subject</a>
+      <a class="btn" href="#rules">How Foundation is graded</a>
+    </div>
+    <p class="hero__by">Made by Angad Jangir</p>
+
+    <figure class="route">
+      <svg class="route__svg" viewBox="0 0 1200 300" role="img"
+           aria-label="The eight Foundation courses in the order the course team suggests, climbing from 4 to 32 credits.">
+        <g class="route__grid">
+          <line x1="60" y1="207.5" x2="1160" y2="207.5"/>
+          <line x1="60" y1="162.5" x2="1160" y2="162.5"/>
+          <line x1="60" y1="117.5" x2="1160" y2="117.5"/>
+          <line x1="60" y1="72.5"  x2="1160" y2="72.5"/>
+        </g>
+        <text class="route__axis" x="0" y="211">4 cr</text>
+        <text class="route__axis" x="0" y="166">12</text>
+        <text class="route__axis" x="0" y="121">20</text>
+        <text class="route__axis" x="0" y="76">28</text>
+
+        <path class="route__fill"
+              d="M80 207.5L228.6 185L377.1 162.5L525.7 140L674.3 117.5L822.9 95L971.4 72.5L1120 50L1120 240L80 240Z"/>
+        <path class="route__line"
+              d="M80 207.5L228.6 185L377.1 162.5L525.7 140L674.3 117.5L822.9 95L971.4 72.5L1120 50"/>
+
+        <a class="route__stop" href="maths1/" aria-label="Mathematics for Data Science 1">
+          <circle class="route__dot" cx="80" cy="207.5" r="6.5"/>
+          <text class="route__label" x="80" y="234">Maths 1</text>
+          <text class="route__cr" x="80" y="250">4 cr</text>
+        </a>
+        <a class="route__stop" href="english1/" aria-label="English 1">
+          <circle class="route__dot" cx="228.6" cy="185" r="6.5"/>
+          <text class="route__label" x="228.6" y="211">English 1</text>
+          <text class="route__cr" x="228.6" y="227">8 cr</text>
+        </a>
+        <a class="route__stop" href="ct/" aria-label="Computational Thinking">
+          <circle class="route__dot" cx="377.1" cy="162.5" r="6.5"/>
+          <text class="route__label" x="377.1" y="189">CT</text>
+          <text class="route__cr" x="377.1" y="205">12 cr</text>
+        </a>
+        <a class="route__stop" href="stats1/" aria-label="Statistics for Data Science 1">
+          <circle class="route__dot" cx="525.7" cy="140" r="6.5"/>
+          <text class="route__label" x="525.7" y="166">Stats 1</text>
+          <text class="route__cr" x="525.7" y="182">16 cr</text>
+        </a>
+        <a class="route__stop" href="maths2/" aria-label="Mathematics for Data Science 2">
+          <circle class="route__dot" cx="674.3" cy="117.5" r="6.5"/>
+          <text class="route__label" x="674.3" y="144">Maths 2</text>
+          <text class="route__cr" x="674.3" y="160">20 cr</text>
+        </a>
+        <a class="route__stop" href="english2/" aria-label="English 2">
+          <circle class="route__dot" cx="822.9" cy="95" r="6.5"/>
+          <text class="route__label" x="822.9" y="121">English 2</text>
+          <text class="route__cr" x="822.9" y="137">24 cr</text>
+        </a>
+        <a class="route__stop" href="python/" aria-label="Programming in Python">
+          <circle class="route__dot" cx="971.4" cy="72.5" r="6.5"/>
+          <text class="route__label" x="971.4" y="99">Python</text>
+          <text class="route__cr" x="971.4" y="115">28 cr</text>
+        </a>
+        <a class="route__stop" href="stats2/" aria-label="Statistics for Data Science 2">
+          <circle class="route__dot" cx="1120" cy="50" r="6.5"/>
+          <text class="route__label" x="1120" y="76">Stats 2</text>
+          <text class="route__cr" x="1120" y="92">32 cr</text>
+        </a>
+
+        <text class="route__summit" x="1120" y="28" text-anchor="middle">Diploma level →</text>
+      </svg>
+      <figcaption class="route__cap">
+        The order the course team suggests, and the only order in which every
+        prerequisite is already behind you. <b>All eight must be done before you
+        can register for a single Diploma course.</b>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band" aria-label="Foundation level in numbers">
+  <div class="wrap">
+    <div class="ledger">
+      <div class="ledger__cell ledger__cell--lead">
+        <span class="ledger__n">8</span>
+        <span class="ledger__k">courses, all compulsory</span>
+      </div>
+      <div class="ledger__cell">
+        <span class="ledger__n">32<em>cr</em></span>
+        <span class="ledger__k">4 credits each</span>
+      </div>
+      <div class="ledger__cell">
+        <span class="ledger__n">12</span>
+        <span class="ledger__k">weeks of content per course</span>
+      </div>
+      <div class="ledger__cell">
+        <span class="ledger__n">951</span>
+        <span class="ledger__k">official lectures across the eight</span>
+      </div>
+      <div class="ledger__cell">
+        <span class="ledger__n">309<em>h</em></span>
+        <span class="ledger__k">of video, if you watch every one</span>
+      </div>
+      <div class="ledger__cell">
+        <span class="ledger__n">4</span>
+        <span class="ledger__k">courses per term, at most</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="change">
+  <div class="wrap">
+    <div class="slab">
+      <p class="slab__tag">The rule that changed</p>
+      <h2 class="slab__line" id="change">Your weekly assignments are now worth <mark>zero</mark> marks.</h2>
+      <p>
+        Foundation used to hand you 5–10 free marks for doing the weekly
+        assignments. That weightage is gone: <b>GAA is 0</b>. In its place,
+        <b>10 marks of questions in the two quizzes and the end term come
+        straight out of the assignments</b>.
+      </p>
+      <p>
+        So skipping them costs you more than it used to, not less. They are also
+        still the <b>only</b> thing that makes you eligible to sit the end term —
+        best 5 of your first 7 weeks has to average 40/100.
+        <a href="#rules">The full rules are below.</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="subjects" aria-labelledby="subjects-h">
+  <div class="wrap">
+    <p class="eyebrow">The eight</p>
+    <h2 id="subjects-h">Every course, its own guide</h2>
+    <p class="lede">
+      Each one is written the same way: what it really asks, the week-by-week
+      map, the grading formula, where people lose marks, and the resources
+      worth your evening.
+    </p>
+
+    <div class="deck" style="margin-top: var(--s-6)">
+
+      <a class="scard scard--maths1" href="maths1/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">01 · 4 credits</span>
+        <span class="scard__name">Mathematics for Data Science 1</span>
+        <span class="scard__code">BSMA1001</span>
+        <span class="scard__what">Sets and functions, straight lines, quadratics, polynomials, logs, limits, derivatives, integrals — then a hard left turn into graph theory.</span>
+        <span class="scard__foot">
+          <span>186 lectures · 48 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--english1" href="english1/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">02 · 4 credits</span>
+        <span class="scard__name">English 1</span>
+        <span class="scard__code">BSHS1001</span>
+        <span class="scard__what">Sounds, parts of speech, tenses, reading and listening, then writing. The course most people underestimate and then scrape through.</span>
+        <span class="scard__foot">
+          <span>71 lectures · 30 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--ct" href="ct/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">03 · 4 credits</span>
+        <span class="scard__name">Computational Thinking</span>
+        <span class="scard__code">BSCS1001</span>
+        <span class="scard__what">Pseudocode, flowcharts, iteration, lists and dictionaries, graphs, backtracking. Programming without a compiler to tell you that you are wrong.</span>
+        <span class="scard__foot">
+          <span>134 lectures · 38 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--stats1" href="stats1/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">04 · 4 credits</span>
+        <span class="scard__name">Statistics for Data Science 1</span>
+        <span class="scard__code">BSMA1002</span>
+        <span class="scard__what">Describing data, then counting, then probability, then random variables. Gentle for six weeks and then suddenly not.</span>
+        <span class="scard__foot">
+          <span>149 lectures · 51 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--maths2" href="maths2/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">05 · 4 credits</span>
+        <span class="scard__name">Mathematics for Data Science 2</span>
+        <span class="scard__code">BSMA1003</span>
+        <span class="scard__what">Linear algebra done properly — vector spaces, bases, rank, linear maps, orthogonality — then multivariable calculus. The course the Diploma leans on hardest.</span>
+        <span class="scard__foot">
+          <span>111 lectures · 32 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--english2" href="english2/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">06 · 4 credits</span>
+        <span class="scard__name">English 2</span>
+        <span class="scard__code">BSHS1002</span>
+        <span class="scard__what">Sentence patterns, listening, speaking, reading, writing, and social skills. Figures of speech in week one — it is not English 1 again.</span>
+        <span class="scard__foot">
+          <span>89 lectures · 42 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--python" href="python/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">07 · 4 credits</span>
+        <span class="scard__name">Programming in Python</span>
+        <span class="scard__code">BSCS1002</span>
+        <span class="scard__what">The only Foundation course with programming exams. Two OPPEs, no second quiz, and a hard rule: one OPPE must cross 40 or you do not get a grade.</span>
+        <span class="scard__foot">
+          <span>95 lectures · 23 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+      <a class="scard scard--stats2" href="stats2/">
+        <span class="scard__spine"></span>
+        <span class="scard__no">08 · 4 credits</span>
+        <span class="scard__name">Statistics for Data Science 2</span>
+        <span class="scard__code">BSMA1004</span>
+        <span class="scard__what">Joint distributions, continuous random variables, limit theorems, estimation, and hypothesis testing — taught out of real IPL data.</span>
+        <span class="scard__foot">
+          <span>116 lectures · 45 h</span>
+          <span class="scard__go">Open <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band--edge" id="rules" aria-labelledby="rules-h">
+  <div class="wrap">
+    <p class="eyebrow">How Foundation is graded</p>
+    <h2 id="rules-h">Three numbers decide your grade</h2>
+
+    <div class="split">
+      <div>
+        <p>
+          For six of the eight courses, your final score comes out of two quizzes
+          and one end term. Nothing else. The formula takes whichever of two
+          splits is kinder to you:
+        </p>
+
+        <div class="formula">
+          T = max( <b>0.6</b>F + <b>0.3</b>·max(Qz1, Qz2),
+                   &nbsp;<b>0.45</b>F + <b>0.25</b>Qz1 + <b>0.3</b>Qz2 )
+        </div>
+
+        <p>
+          F is the end term, Qz1 and Qz2 are the two quizzes, and a quiz you
+          skip counts as 0. Read the first branch carefully: <b>if you write only
+          one quiz and ace the end term, you still get 90% of the marks on the
+          table.</b> Read the second and you see why writing both is better —
+          Quiz 2 is weighted more than Quiz 1.
+        </p>
+
+        <p>Two courses do not use it:</p>
+        <ul>
+          <li><b>Programming in Python</b> has no Quiz 2. Its score is
+            <span class="mono">0.15·Qz1 + 0.4·F + 0.25·max(PE1, PE2) + 0.2·min(PE1, PE2)</span>,
+            and you must score 40 or more in at least one programming exam or you
+            get no grade at all.</li>
+          <li><b>Statistics 1 and 2</b> and <b>Maths 2</b> add bonus marks for
+            optional course activities — up to 5, 5 and 6 respectively, and only
+            if you pass.</li>
+        </ul>
+
+        <div class="callout callout--warn">
+          <p class="callout__head">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v5M12 17h.01M10.3 3.9 1.8 18.1A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+            Before the formula, the gate
+          </p>
+          <p>
+            You are only allowed to sit the end term if the <b>average of your
+            best 5 of 8</b> — the first seven weekly assignments plus Mock Quiz 1 —
+            is <b>40/100 or more</b>, <em>and</em> you attended at least one quiz.
+            Miss that and the formula never gets used.
+          </p>
+        </div>
+
+        <p>
+          Weeks 11 and 12 are not in any eligibility calculation, which is why
+          people skip them. They <em>are</em> in the end term. Do them.
+        </p>
+      </div>
+
+      <div>
+        <div class="calc" id="calc">
+          <div class="calc__head">
+            <h3>What do I need?</h3>
+            <select class="calc__pick" id="calc-course" aria-label="Course">
+              <option value="std" selected>Six standard courses</option>
+              <option value="py">Programming in Python</option>
+            </select>
+          </div>
+          <div class="calc__body" id="calc-fields"></div>
+          <div class="calc__out">
+            <div>
+              <div class="calc__score" id="calc-score">—</div>
+              <div class="calc__grade">Total score <b id="calc-grade">—</b></div>
+            </div>
+            <p class="calc__note" id="calc-note">
+              Move the sliders. Grade bands are the programme's usual
+              S/A/B/C/D/E scale — confirm them against your course page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="term" aria-labelledby="term-h">
+  <div class="wrap">
+    <p class="eyebrow">September 2026 term</p>
+    <h2 id="term-h">The dates that actually bind</h2>
+    <div class="split">
+      <div>
+        <div class="ticket">
+          <div class="ticket__top">
+            <span class="ticket__title">Foundation · Sep 2026 term</span>
+            <span class="ticket__term">from the academic calendar</span>
+          </div>
+          <div class="ticket__rows">
+            <div class="ticket__row" data-date="2026-09-23">
+              <span class="ticket__what">Course registration closes</span>
+              <span class="ticket__when">23 Sep 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-09-27">
+              <span class="ticket__what">Qualifier applications close</span>
+              <span class="ticket__when">27 Sep 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-10-02">
+              <span class="ticket__what">Term starts</span>
+              <span class="ticket__when">2 Oct 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-10-23">
+              <span class="ticket__what">Drop-course window opens</span>
+              <span class="ticket__when">23–25 Oct 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-11-15">
+              <span class="ticket__what">Quiz 1 · and the Qualifier exam</span>
+              <span class="ticket__when">15 Nov 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-11-21">
+              <span class="ticket__what">OPPE 1 (Python)</span>
+              <span class="ticket__when">21–22 Nov 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-12-05">
+              <span class="ticket__what">Quiz 2</span>
+              <span class="ticket__when">5 Dec 2026</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2026-12-19">
+              <span class="ticket__what">OPPE 2 (Python)</span>
+              <span class="ticket__when">19–20 Dec, 2–3 Jan</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2027-01-10">
+              <span class="ticket__what">End term</span>
+              <span class="ticket__when">10 Jan 2027</span><span class="ticket__in"></span>
+            </div>
+            <div class="ticket__row" data-date="2027-01-18">
+              <span class="ticket__what">Results</span>
+              <span class="ticket__when">18–23 Jan 2027</span><span class="ticket__in"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3>Read this before you plan</h3>
+        <p>
+          Quiz 2 falls on a <b>Saturday</b> this term, not the usual Sunday. The
+          end term is on <b>10 January</b>, which means the last three weeks of
+          revision land squarely in the new-year holidays.
+        </p>
+        <div class="note">
+          <p>
+            <strong>Assignment deadlines do not move.</strong> The grading
+            document says so in capital letters, and it means it. There is no
+            make-up quiz either — miss a quiz and it scores 0.
+          </p>
+        </div>
+        <p>
+          Dates above come from the official Sep 2026 academic calendar. The
+          <b>Sep 2026 grading document was not published yet</b> when this page was
+          last checked (23 September 2026), so every formula here is from the May
+          2026 document. Check your course page in week 1 and trust that over this.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band band--edge" id="order" aria-labelledby="order-h">
+  <div class="wrap">
+    <p class="eyebrow">Sequencing</p>
+    <h2 id="order-h">What order, and what really blocks what</h2>
+    <div class="split">
+      <div>
+        <p>
+          Only three hard prerequisites exist inside Foundation. Everything else
+          is advice — good advice, but advice.
+        </p>
+        <div class="tablewrap">
+          <table class="data">
+            <thead>
+              <tr><th>Course</th><th>You must have done</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Mathematics for Data Science 2</td><td>Mathematics for Data Science 1</td></tr>
+              <tr><td>Programming in Python</td><td>Computational Thinking</td></tr>
+              <tr><td>English 2</td><td>English 1</td></tr>
+              <tr><td>Statistics for Data Science 2</td><td>Statistics 1 and Maths 1<br><span class="dim">co-requisite: Maths 2</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Maths 1, English 1, Computational Thinking and Statistics 1 have no
+          prerequisites at all — which is exactly why the suggested pathway puts
+          them first.
+        </p>
+      </div>
+      <div>
+        <h3>A sane two-term plan</h3>
+        <ol class="orderlist">
+          <li><b>Maths 1 · English 1 · CT · Stats 1</b><span>Nothing blocks any of them. If four is too much, drop Stats 1 — it is the heaviest of the four.</span></li>
+          <li><b>Maths 2 · English 2 · Python · Stats 2</b><span>Every prerequisite from term 1 is now behind you. Python brings the OPPEs, so keep its weeks 1–8 assignments spotless.</span></li>
+        </ol>
+        <div class="note">
+          <p>
+            <strong>How many you can take is not your choice alone.</strong> Your
+            Credit Clearing Capability decides it — up to four courses, based on
+            the Qualifier or on your previous term's end term scores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="about" aria-labelledby="about-h">
+  <div class="wrap wrap--narrow">
+    <p class="eyebrow">About</p>
+    <h2 id="about-h">Why this exists</h2>
+    <p>
+      The official pages tell you the syllabus. They do not tell you that
+      Maths 1 turns into a graph-theory course in week 10, that Python's real
+      danger is an eligibility rule and not the exam, or that the assignments
+      you now get zero marks for are still the thing standing between you and
+      the end term hall.
+    </p>
+    <p>
+      Every fact here has a source, and every source is linked. Nothing on this
+      site is an answer key: there are no graded-assignment solutions and no
+      links to sites that post them. Where a page says "this is my opinion", it
+      says so.
+    </p>
+    <p class="mono dim">Made by Angad Jangir · last checked 23 September 2026</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="foot__made">Basecamp</p>
+      <p>The Foundation-level field guide for the IIT&nbsp;Madras BS in Data Science and Applications.<br>Made by Angad Jangir.</p>
+    </div>
+    <div>
+      <h4>The eight</h4>
+      <ul>
+        <li><a href="maths1/">Mathematics 1</a></li>
+        <li><a href="english1/">English 1</a></li>
+        <li><a href="ct/">Computational Thinking</a></li>
+        <li><a href="stats1/">Statistics 1</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>&nbsp;</h4>
+      <ul>
+        <li><a href="maths2/">Mathematics 2</a></li>
+        <li><a href="english2/">English 2</a></li>
+        <li><a href="python/">Programming in Python</a></li>
+        <li><a href="stats2/">Statistics 2</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Official</h4>
+      <ul>
+        <li><a href="https://study.iitm.ac.in/ds/academics.html">Programme academics</a></li>
+        <li><a href="https://study.iitm.ac.in/ds/academic_calendar.html">Academic calendar</a></li>
+        <li><a href="docs/sources.html">Where every fact came from</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/contours.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/calc.js"></script>
+</body>
+</html>
