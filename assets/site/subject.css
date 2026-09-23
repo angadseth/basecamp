@@ -232,4 +232,13 @@
   line-height: 1.8;
 }
 .widget__read b { color: var(--subject-accent); }
-.widget canvas { width: 100%; height: auto; display: block; border-radius: var(--radius-2); }
+/* Canvas has no intrinsic size worth trusting, so the frame sets it and the
+   script reads it back. Without this the plot stretches to the width's height. */
+.widget canvas {
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  max-height: 26rem;
+  display: block;
+  border-radius: var(--radius-2);
+}
+@media (max-width: 40rem) { .widget canvas { aspect-ratio: 4 / 3; } }
