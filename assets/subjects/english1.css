@@ -1,0 +1,173 @@
+/* English 1 — letterpress.
+   Cream stock, a ruled page, one red pen. Everything set in metal type:
+   the display face is inked heavy, the text face is a reading Garamond, and
+   the only sans-like thing on the page is the typewriter used for marks. */
+
+:root {
+  --font-display: "Libre Baskerville", ui-serif, Georgia, serif;
+  --font-text: "EB Garamond", ui-serif, Garamond, Georgia, serif;
+  --font-mono: "Courier Prime", ui-monospace, "Courier New", monospace;
+
+  --paper: #f9f5ec;
+  --paper-2: #f2ece0;
+  --paper-3: #e9e2d2;
+  --ink: #1d1a17;
+  --ink-2: #4b443c;
+  --ink-3: #7d746a;
+  --rule: #d9cfbd;
+  --rule-soft: #e6ddcd;
+
+  --accent: #c0392b;
+  --accent-ink: #fff8f3;
+  --accent-soft: #f5dfdb;
+  --trace: #9a8f7d;
+
+  --ruled: rgb(29 26 23 / 0.055);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14110e;
+    --paper-2: #1b1713;
+    --paper-3: #241f19;
+    --ink: #f0e9dd;
+    --ink-2: #bbb1a2;
+    --ink-3: #8a8073;
+    --rule: #332c24;
+    --rule-soft: #272119;
+
+    --accent: #ff7f70;
+    --accent-ink: #2a0d08;
+    --accent-soft: #3a1c17;
+    --trace: #7d7263;
+
+    --ruled: rgb(240 233 221 / 0.045);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14110e;
+  --paper-2: #1b1713;
+  --paper-3: #241f19;
+  --ink: #f0e9dd;
+  --ink-2: #bbb1a2;
+  --ink-3: #8a8073;
+  --rule: #332c24;
+  --rule-soft: #272119;
+
+  --accent: #ff7f70;
+  --accent-ink: #2a0d08;
+  --accent-soft: #3a1c17;
+  --trace: #7d7263;
+
+  --ruled: rgb(240 233 221 / 0.045);
+}
+
+/* Ruled writing paper, at the reading line height. */
+body {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 31px,
+    var(--ruled) 31px 32px
+  );
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 92%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li, .widget__head { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Letterpress display: tight, dark, a little old. */
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.012em; }
+.shero__title { letter-spacing: -0.02em; line-height: 1.02; }
+.chapter__no { font-family: var(--font-display); }
+
+/* Body copy earns a bigger size, because Garamond runs small. */
+body { font-size: clamp(1.02rem, 0.97rem + 0.24vw, 1.16rem); }
+
+/* The red pen: used for corrections in the margin and nothing else. */
+.pen {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 0.88em;
+}
+.wrong {
+  text-decoration: line-through;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  color: var(--ink-3);
+}
+.right { color: var(--ink); border-bottom: 2px solid var(--accent); }
+
+/* Drop cap on the first chapter, the way a set book opens. */
+#asks > .cols > div > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.2em;
+  line-height: 0.82;
+  padding: 0.06em 0.09em 0 0;
+  color: var(--accent);
+}
+
+/* ---- The tense grid ---------------------------------------------------- */
+
+.tense {
+  display: grid;
+  grid-template-columns: minmax(7rem, 1fr) repeat(3, minmax(0, 1.2fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+}
+.tense__cell {
+  background: var(--paper);
+  padding: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  line-height: 1.4;
+  text-align: left;
+}
+.tense__cell--corner { background: var(--paper-2); }
+.tense__head {
+  background: var(--paper-2);
+  color: var(--ink-3);
+  font-family: var(--font-display);
+  font-size: var(--t--1);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.tense__head--row { color: var(--ink-2); }
+.tense__btn {
+  border: 0;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.tense__btn:hover { background: var(--paper-2); color: var(--ink); }
+.tense__btn[aria-pressed="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+@media (max-width: 42rem) {
+  .tense { grid-template-columns: minmax(5rem, 1fr) repeat(3, minmax(0, 1fr)); }
+  .tense__cell { padding: var(--s-2); font-size: 0.68rem; }
+}
+
+.tense__name {
+  font-family: var(--font-display);
+  font-size: var(--t-1);
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--s-2);
+}
+.tense__form {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: var(--s-2);
+}
+.tense__eg { font-style: italic; font-size: var(--t-1); margin-bottom: var(--s-3); }
+#e1-tense-read p:last-child { margin-bottom: 0; color: var(--ink-2); font-size: var(--t--1); }
