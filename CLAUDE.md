@@ -1,7 +1,8 @@
 # Basecamp: project rules
 
 A field guide for the **eight Foundation-level courses** of the IIT Madras BS in Data Science and
-Applications. One hub, eight subject pages, **each subject with its own theme**.
+Applications. One hub, eight subject pages, **each subject with its own theme**. Live at
+https://angadseth.github.io/basecamp/ (repo `angadseth/basecamp`, public, Pages from `main` root).
 
 Read `memory/MEMORY.md` first (local only, gitignored), then `PROJECT-LOG.md`. Add to both as you work.
 Raw research lives in `research/` (local only).
