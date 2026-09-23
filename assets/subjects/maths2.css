@@ -131,7 +131,8 @@ h1, h2, h3 { letter-spacing: -0.03em; font-weight: 600; }
 
 .lin__facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  /* Four facts, always on one row or two — never three-plus-a-gap. */
+  grid-template-columns: repeat(2, 1fr);
   gap: 1px;
   background: var(--rule-soft);
   border: 1px solid var(--rule-soft);
@@ -139,6 +140,7 @@ h1, h2, h3 { letter-spacing: -0.03em; font-weight: 600; }
   overflow: hidden;
   margin-top: var(--s-4);
 }
+@media (min-width: 30rem) { .lin__facts { grid-template-columns: repeat(4, 1fr); } }
 .lin__facts div { background: var(--paper); padding: var(--s-3) var(--s-4); }
 .lin__facts dt { font-family: var(--font-mono); font-size: var(--t--1); color: var(--ink-3); margin-bottom: var(--s-1); }
 .lin__facts dd {
