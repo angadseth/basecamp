@@ -157,13 +157,28 @@
 }
 .orderlist li::before {
   content: counter(step);
+  grid-column: 1;
+  grid-row: 1;
   font-family: var(--font-mono);
   font-size: var(--t--1);
   color: var(--accent);
   font-weight: 600;
 }
-.orderlist b { font-family: var(--font-display); font-weight: 700; }
-.orderlist span { display: block; font-size: var(--t--1); color: var(--ink-3); margin-top: 0.15em; }
+.orderlist b {
+  grid-column: 2;
+  grid-row: 1;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--t-0);
+}
+.orderlist span {
+  grid-column: 2;
+  grid-row: 2;
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-top: 0.2em;
+  line-height: 1.5;
+}
 
 /* ---- Score calculator -------------------------------------------------- */
 
