@@ -1,0 +1,151 @@
+/* Mathematics for Data Science 2 — the vector space.
+   A plane with a basis on it. Light mode is a cool drafting white with a dot
+   lattice; dark mode is the space itself, with the basis vectors glowing.
+   Blue is the input, orange is what the matrix did to it — and those two
+   colours never mean anything else on this page. */
+
+:root {
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "Literata", ui-serif, Georgia, serif;
+  --font-mono: "Fira Mono", ui-monospace, monospace;
+
+  --paper: #fafbfd;
+  --paper-2: #f0f3f8;
+  --paper-3: #e5eaf2;
+  --ink: #101623;
+  --ink-2: #3a455c;
+  --ink-3: #6c7890;
+  --rule: #d3dae6;
+  --rule-soft: #e3e8f0;
+
+  --accent: #1d5fbf;
+  --accent-ink: #ffffff;
+  --accent-soft: #dbe6f8;
+  --trace: #8b9ab5;
+
+  /* the image of the basis under the transformation */
+  --image: #e2610a;
+  --image-soft: #f8e0cd;
+
+  --dot: rgb(29 95 191 / 0.16);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #080b12;
+    --paper-2: #0e1320;
+    --paper-3: #151c2c;
+    --ink: #e6ecf7;
+    --ink-2: #a9b5cb;
+    --ink-3: #74809a;
+    --rule: #1e2738;
+    --rule-soft: #161d2b;
+
+    --accent: #6aa6ff;
+    --accent-ink: #04101f;
+    --accent-soft: #14263f;
+    --trace: #5d6c88;
+
+    --image: #ff9048;
+    --image-soft: #35220f;
+
+    --dot: rgb(106 166 255 / 0.18);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #080b12;
+  --paper-2: #0e1320;
+  --paper-3: #151c2c;
+  --ink: #e6ecf7;
+  --ink-2: #a9b5cb;
+  --ink-3: #74809a;
+  --rule: #1e2738;
+  --rule-soft: #161d2b;
+
+  --accent: #6aa6ff;
+  --accent-ink: #04101f;
+  --accent-soft: #14263f;
+  --trace: #5d6c88;
+
+  --image: #ff9048;
+  --image-soft: #35220f;
+
+  --dot: rgb(106 166 255 / 0.18);
+}
+
+/* A dot lattice rather than a ruled grid: a vector space has points, not lines. */
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px);
+  background-size: 26px 26px;
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 90%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+h1, h2, h3 { letter-spacing: -0.03em; font-weight: 600; }
+.shero__title { font-weight: 600; }
+.chapter__no { font-family: var(--font-mono); }
+
+/* Matrices set in mono, bracketed by borders rather than by glyphs. */
+.mat {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 3.2rem);
+  gap: 0.15rem 0.4rem;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  padding: 0.35rem 0.5rem;
+  border-left: 2px solid var(--ink-3);
+  border-right: 2px solid var(--ink-3);
+  border-radius: 3px;
+  vertical-align: middle;
+}
+
+/* ---- The transformation widget ----------------------------------------- */
+
+.lin { display: grid; gap: var(--s-5); }
+@media (min-width: 52rem) { .lin { grid-template-columns: 1.1fr 0.9fr; } }
+
+.lin__stage {
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  background: var(--paper);
+  overflow: hidden;
+}
+.lin__stage svg { width: 100%; height: auto; display: block; }
+
+.lin__grid { stroke: var(--rule); stroke-width: 1; }
+.lin__img { stroke: color-mix(in oklab, var(--image) 45%, transparent); stroke-width: 1; }
+.lin__area { fill: var(--image); opacity: 0.13; }
+.lin__vec-i { stroke: var(--accent); stroke-width: 3; }
+.lin__vec-j { stroke: var(--accent); stroke-width: 3; opacity: 0.55; }
+.lin__vec-fi { stroke: var(--image); stroke-width: 3.4; }
+.lin__vec-fj { stroke: var(--image); stroke-width: 3.4; opacity: 0.6; }
+.lin__axis { stroke: var(--ink-3); stroke-width: 1.3; }
+
+.lin__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  margin-top: var(--s-4);
+}
+.lin__facts div { background: var(--paper); padding: var(--s-3) var(--s-4); }
+.lin__facts dt { font-family: var(--font-mono); font-size: var(--t--1); color: var(--ink-3); margin-bottom: var(--s-1); }
+.lin__facts dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-1);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.lin__facts div.is-warn dd { color: var(--image); }
