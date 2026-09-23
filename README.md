@@ -3,7 +3,7 @@
 A field guide to the **eight Foundation-level courses** of the IIT Madras BS in Data Science and
 Applications — one hub and eight subject pages, each subject with its own theme.
 
-**Made by Angad Jangir.**
+**Live at [angadseth.github.io/basecamp](https://angadseth.github.io/basecamp/)** · Made by Angad Jangir.
 
 | # | Course | Code | Page |
 |---|---|---|---|
