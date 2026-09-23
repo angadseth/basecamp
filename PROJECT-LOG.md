@@ -65,8 +65,19 @@ own accent, and a page-wide background motif.
 theme actually loaded, footer credit, no console errors, light and dark, and no sideways scroll at
 390px). `node tests/check.mjs … --links` → **59 external links, all live**.
 
+### Published, same day
+`gh repo create basecamp --public --source=.` → push → Pages enabled from `main` root via the API.
+**The first two Pages builds failed with a bare "Page build failed"** and no detail; an empty `.nojekyll`
+at the repo root fixed it at once, because Pages runs its legacy Jekyll build by default and this site
+has no use for it.
+
+Live check: `node tests/check.mjs https://angadseth.github.io/basecamp/ --links` → **ALL PASSED, 59
+external links**, and the deployed page was opened and looked at, not just tested.
+
 ### Open
-1. No GitHub repo or Pages deploy yet — commits are local only.
-2. Replace the May 2026 formulas when the Sep 2026 grading document appears.
-3. Grade bands used by the hub calculator are the programme's usual scale, not from the grading
-   document; the page says to confirm them.
+1. Replace the May 2026 formulas when the Sep 2026 grading document appears; the caveat is repeated on all
+   eight subject pages and in `docs/sources.html`.
+2. Grade bands used by the hub calculator are the programme's usual scale, not from the grading document;
+   the page says to confirm them.
+3. No OG share image yet — worth adding before the site is posted anywhere.
+4. Every commit from today lands on one day's square on the contribution graph.
