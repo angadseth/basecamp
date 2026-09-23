@@ -116,7 +116,9 @@
 
   var heroCanvas = document.getElementById("m1-hero");
   if (heroCanvas) {
-    var hero = new Plot(heroCanvas, { x0: -5.2, x1: 5.2, y0: -4.6, y1: 6.2 });
+    /* World matches the frame's 4:3, so a circle is a circle and the parabola
+       is not secretly stretched. */
+    var hero = new Plot(heroCanvas, { x0: -6.4, x1: 6.4, y0: -4.8, y1: 4.8 });
     var t0 = null;
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -166,7 +168,8 @@
   var wCanvas = document.getElementById("m1-quad");
   if (!wCanvas) return;
 
-  var plot = new Plot(wCanvas, { x0: -8, x1: 8, y0: -8, y1: 8 });
+  /* 2:1 frame, so 2:1 world — see the note on the hero above. */
+  var plot = new Plot(wCanvas, { x0: -12, x1: 12, y0: -6, y1: 6 });
   var out = document.getElementById("m1-read");
   var inputs = {
     a: document.getElementById("m1-a"),
