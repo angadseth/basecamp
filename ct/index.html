@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computational Thinking (BSCS1001) — Basecamp</title>
+<meta name="description" content="What Computational Thinking actually asks, its twelve weeks from variables to concurrency, the grading formula, where marks are lost, and every resource worth opening.">
+<meta name="author" content="Angad Jangir">
+<meta name="theme-color" content="#eff4f8">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Computational Thinking — Basecamp">
+<meta property="og:description" content="Programming without a compiler to tell you that you are wrong.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("basecamp.theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="../assets/site/tokens.css">
+<link rel="stylesheet" href="../assets/site/layout.css">
+<link rel="stylesheet" href="../assets/site/components.css">
+<link rel="stylesheet" href="../assets/site/subject.css">
+<link rel="stylesheet" href="../assets/subjects/ct.css">
+</head>
+<body class="subj subj--ct">
+<a class="skip" href="#main">Skip to the guide</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Basecamp, the hub">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="var(--ink-3)" stroke-width="2.4">
+          <path d="M32 58c14 0 24-7 24-14S46 30 32 30 8 37 8 44s10 14 24 14Z"/>
+          <path d="M32 47c8 0 14-4 14-7s-6-7-14-7-14 4-14 7 6 7 14 7Z"/>
+        </g>
+        <path d="M32 6v28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 7l16 6-16 6z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Basecamp</span>
+    </a>
+    <span class="brand__ed">03 · Computational Thinking</span>
+    <nav class="top__links" aria-label="Site">
+      <a class="btn" href="../#subjects"><span class="btn__label">All eight</span></a>
+      <button class="btn" id="theme-btn" type="button" aria-label="Change colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2v14a7 7 0 0 1 0-14z"/></svg>
+        <span id="theme-txt">Auto</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="shero">
+  <div class="wrap shero__inner">
+    <div>
+      <a class="shero__up" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Basecamp
+      </a>
+      <p class="shero__code">BSCS1001 · 4 credits · Foundation</p>
+      <h1 class="shero__title">Computational<br>Thinking</h1>
+      <p class="shero__lede">
+        Programming with <b>no compiler to tell you that you are wrong</b>. You
+        write pseudocode and draw flowcharts, and the only way to know whether
+        they work is to trace them by hand.
+      </p>
+      <dl class="facts">
+        <div><dt>Lectures</dt><dd>134 <small>· 38 h</small></dd></div>
+        <div><dt>Prerequisite</dt><dd>None</dd></div>
+        <div><dt>Assessed by</dt><dd>2 quizzes + end term</dd></div>
+        <div><dt>Unlocks</dt><dd>Programming in Python</dd></div>
+      </dl>
+    </div>
+    <figure class="shero__fig">
+      <svg viewBox="0 0 400 300" aria-label="A flowchart: start, initialise, a decision diamond, and a loop back.">
+        <g fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round">
+          <rect x="140" y="20" width="120" height="34" rx="17"/>
+          <rect x="140" y="80" width="120" height="34"/>
+          <path d="M200 140 L268 172 L200 204 L132 172 Z"/>
+          <rect x="140" y="230" width="120" height="34"/>
+          <path d="M200 54v26M200 114v26M200 204v26" marker-end="url(#ct-arrow)"/>
+          <path d="M268 172h58v-75h-66" marker-end="url(#ct-arrow)"/>
+        </g>
+        <defs>
+          <marker id="ct-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/>
+          </marker>
+        </defs>
+        <g font-family="var(--font-mono)" font-size="12" fill="var(--ink-2)" text-anchor="middle">
+          <text x="200" y="42">start</text>
+          <text x="200" y="102">max = L[0], i = 1</text>
+          <text x="200" y="177">i &lt; len(L)?</text>
+          <text x="200" y="252">return max</text>
+          <text x="332" y="140" fill="var(--ink-3)">yes</text>
+          <text x="214" y="224" fill="var(--ink-3)">no</text>
+        </g>
+      </svg>
+      <figcaption class="shero__figcap">week 1 · the only three shapes you need</figcaption>
+    </figure>
+  </div>
+</section>
+
+<nav class="toc" aria-label="Chapters">
+  <div class="wrap">
+    <ul class="toc__list">
+      <li><a href="#asks">What it asks</a></li>
+      <li><a href="#map">The twelve weeks</a></li>
+      <li><a href="#trace">Trace it yourself</a></li>
+      <li><a href="#grading">How it is graded</a></li>
+      <li><a href="#loss">Where marks go</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#week1">Your first week</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="chapter" id="asks">
+  <div class="chapter__head">
+    <span class="chapter__no">01</span>
+    <div>
+      <h2 class="chapter__title">What this course actually asks</h2>
+      <span class="chapter__sub">Can you be the computer for three minutes?</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>
+        Computational Thinking is taught by <b>Madhavan Mukund</b>, director of
+        Chennai Mathematical Institute, and <b>G Venkatesh</b>, Professor of
+        Practice at IIT Madras. It is deliberately language-free: you never run
+        anything. You write pseudocode, draw flowcharts, and answer questions
+        about what they would do.
+      </p>
+      <p>
+        That sounds easier than programming. It is harder, because the feedback
+        loop is gone. In Python, a wrong loop bound produces an error you can
+        see. Here, a wrong loop bound produces an answer that looks fine until
+        the exam marks it wrong. <b>The entire skill the course builds is
+        tracing</b> — walking a program line by line, writing down what every
+        variable holds, and not skipping ahead.
+      </p>
+      <div class="note">
+        <p>
+          <strong>If you already code</strong>, do not skip the early weeks. The
+          course's pseudocode has its own conventions, and the exam questions are
+          about <em>its</em> notation, not about whether you could write the same
+          thing in Python.
+        </p>
+      </div>
+      <p>
+        It is the prerequisite for Programming in Python, and the concepts in
+        weeks 5 to 9 — lists, dictionaries, graphs, matrices, recursion — come
+        back there immediately.
+      </p>
+    </div>
+    <aside class="cols__side">
+      <h4>In one line</h4>
+      <p>Pseudocode, flowcharts, and the data structures that everything else is built on.</p>
+      <h4>No prescribed book</h4>
+      <p>
+        The course page lists none. The lectures and the weekly problems are the
+        material — which makes the assignments more important here than anywhere
+        else in Foundation.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="map">
+  <div class="chapter__head">
+    <span class="chapter__no">02</span>
+    <div>
+      <h2 class="chapter__title">The twelve weeks</h2>
+      <span class="chapter__sub">Topics quoted from the official course page</span>
+    </div>
+  </div>
+
+  <p>
+    Four blocks: <b>1–4</b> build the control flow, <b>5–9</b> build the data
+    structures, <b>10</b> is object-oriented programming, and <b>11–12</b> are a
+    tour of ideas you will meet again years later.
+  </p>
+
+  <div class="weeks">
+    <div class="week"><span class="week__n">W1</span><p class="week__t"><b>Variables, initialization, iterators, filtering, datatypes, flowcharts, sanity of data.</b></p></div>
+    <div class="week"><span class="week__n">W2</span><p class="week__t"><b>Iteration, filtering, selection, pseudocode, finding max and min, AND operator.</b><span class="week__meta">max-and-min is the pattern every later question is built from — see the tracer below</span></p></div>
+    <div class="week"><span class="week__n">W3</span><p class="week__t"><b>Multiple iterations (non-nested), three prizes problem, procedures, parameters, side effects, OR operator.</b></p></div>
+    <div class="week"><span class="week__n">W4</span><p class="week__t"><b>Nested iterations, birthday paradox, binning.</b><span class="week__meta">where the difficulty step is — nested loops break more people than anything else here</span></p></div>
+    <div class="week"><span class="week__n">W5</span><p class="week__t"><b>List, insertion sort.</b></p></div>
+    <div class="week"><span class="week__n">W6</span><p class="week__t"><b>Table, dictionary.</b></p></div>
+    <div class="week week--gate"><span class="week__n">W7</span><p class="week__t"><b>Graph, matrix.</b><span class="week__meta">last week that counts toward end-term eligibility</span></p></div>
+    <div class="week"><span class="week__n">W8</span><p class="week__t"><b>Adjacency matrix, edge labelled graph.</b></p></div>
+    <div class="week"><span class="week__n">W9</span><p class="week__t"><b>Backtracking, tree, depth first search, recursion.</b></p></div>
+    <div class="week"><span class="week__n">W10</span><p class="week__t"><b>Object oriented programming.</b> Class, object, encapsulation, abstraction, information hiding, access specifiers.</p></div>
+    <div class="week"><span class="week__n">W11</span><p class="week__t"><b>Systems concepts.</b> Message passing, remote procedure call, cache memory, parallelism, concurrency, polling, preemption, multithreading, producer–consumer, atomicity, consistency, race condition, deadlock, broadcasting.<span class="week__meta">fourteen terms in one week — definitional, and very answerable if you make a glossary</span></p></div>
+    <div class="week"><span class="week__n">W12</span><p class="week__t"><b>Approaches.</b> Top-down, bottom-up, decision tree, numerical prediction, behaviour analysis, classification.</p></div>
+  </div>
+
+  <div class="callout callout--warn">
+    <p class="callout__head">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v5M12 17h.01M10.3 3.9 1.8 18.1A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      Week 11 looks impossible and is not
+    </p>
+    <p>
+      Fourteen systems concepts land in one week and people panic. They are
+      <em>definitional</em> at this level — what a race condition is, what
+      deadlock means, why you would poll. One page of your own notes covers it,
+      and it sits in the end term where the marks are easy.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="trace">
+  <div class="chapter__head">
+    <span class="chapter__no">03</span>
+    <div>
+      <h2 class="chapter__title">Trace it, do not read it</h2>
+      <span class="chapter__sub">Week 2 · finding the max and the min</span>
+    </div>
+  </div>
+
+  <p>
+    This is the shape of almost every question in the first half of the course.
+    Step through it once, then hit <em>New list</em> and predict each line before
+    you press next. When you can do that reliably, weeks 2 to 6 are solved.
+  </p>
+
+  <div class="widget">
+    <div class="widget__head">
+      <h3>Procedure MaxMin(L)</h3>
+      <span class="widget__hint">step through it</span>
+    </div>
+    <div class="widget__body">
+      <ul class="trace__list" id="ct-list"></ul>
+      <div class="trace">
+        <div class="trace__code" id="ct-code"></div>
+        <div class="trace__vars">
+          <h4>Variables</h4>
+          <div id="ct-vars"></div>
+        </div>
+      </div>
+      <div class="trace__bar">
+        <button class="btn" type="button" id="ct-prev">← Back</button>
+        <button class="btn btn--primary" type="button" id="ct-play">Play</button>
+        <button class="btn" type="button" id="ct-next">Next →</button>
+        <button class="btn" type="button" id="ct-new">New list</button>
+        <span class="trace__step" id="ct-step"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <p>
+      <strong>Notice line 2 and 3.</strong> Both start at <code>L[0]</code>, not
+      at 0 and not at infinity. Starting <code>max</code> at 0 is the single most
+      common bug in this course, and it only shows up when every element is
+      negative — which is exactly the case an exam will hand you.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="grading">
+  <div class="chapter__head">
+    <span class="chapter__no">04</span>
+    <div>
+      <h2 class="chapter__title">How it is graded</h2>
+      <span class="chapter__sub">May 2026 grading document · confirm against your course page</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>The standard Foundation formula, with no bonus activities:</p>
+
+      <div class="formula">
+        T = max( <b>0.6</b>F + <b>0.3</b>·max(Qz1, Qz2),
+                 &nbsp;<b>0.45</b>F + <b>0.25</b>Qz1 + <b>0.3</b>Qz2 )
+      </div>
+
+      <h3>The eligibility gate</h3>
+      <p>
+        The average of your <b>best 5 of 8</b> — the first seven weekly
+        assignments plus Mock Quiz 1 — must be <b>40/100 or more</b>, and you must
+        attend at least one of the two quizzes. Mock Quiz 1 appears in the
+        dashboard as "Mock Assignment".
+      </p>
+
+      <div class="callout">
+        <p class="callout__head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg>
+          Assignments matter most in this course
+        </p>
+        <p>
+          There is no prescribed textbook here. The weekly problems <em>are</em>
+          the practice set — and with GAA now at zero, 10 marks of quiz and
+          end-term questions are drawn from them. Doing them is not optional
+          just because they score nothing.
+        </p>
+      </div>
+    </div>
+    <aside class="cols__side">
+      <h4>Sep 2026 dates</h4>
+      <p>
+        Quiz 1 — 15 Nov 2026<br>
+        Quiz 2 — 5 Dec 2026 <em>(a Saturday)</em><br>
+        End term — 10 Jan 2027
+      </p>
+      <h4>Quiz coverage</h4>
+      <p>
+        Quiz 1 covers weeks 1–4 and Quiz 2 covers weeks 1–8, per the programme's
+        academics page. The end term covers everything, including weeks 11 and 12.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="loss">
+  <div class="chapter__head">
+    <span class="chapter__no">05</span>
+    <div>
+      <h2 class="chapter__title">Where the marks actually go</h2>
+      <span class="chapter__sub">My read, from this course and from what people ask about</span>
+    </div>
+  </div>
+
+  <div class="lossbox">
+    <div class="loss">
+      <span class="loss__n">01</span>
+      <h4>Nested loops, in week 4</h4>
+      <p>
+        One loop is intuitive. Two loops, where the inner counter resets every
+        time the outer one moves, is where people start guessing. Trace a nested
+        loop on paper until you can predict the count of iterations without
+        running it.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">02</span>
+      <h4>Off-by-one on the loop bound</h4>
+      <p>
+        <code>i &lt; length(L)</code> and <code>i &lt;= length(L)</code> differ by
+        exactly one wrong answer. With no compiler, nothing catches it except
+        your own trace.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">03</span>
+      <h4>Reading an adjacency matrix backwards</h4>
+      <p>
+        In week 8, row <em>i</em> column <em>j</em> means an edge from <em>i</em>
+        to <em>j</em>. For directed graphs the matrix is not symmetric, and
+        swapping them silently flips every answer.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">04</span>
+      <h4>Skipping weeks 11 and 12</h4>
+      <p>
+        They fall outside the eligibility window, they look intimidating, and
+        they are the most definitional — and therefore the most scoreable — pages
+        of the end term.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="resources">
+  <div class="chapter__head">
+    <span class="chapter__no">06</span>
+    <div>
+      <h2 class="chapter__title">Everything worth opening</h2>
+      <span class="chapter__sub">Official first, then the free things that genuinely help</span>
+    </div>
+  </div>
+
+  <p>Every link here was opened and checked on 23 September 2026.</p>
+
+  <h3>Official</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://study.iitm.ac.in/ds/course_pages/BSCS1001.html">
+      <span class="res__kind res__kind--official">Course page</span>
+      <span class="res__body"><span class="res__name">BSCS1001 on study.iitm.ac.in</span>
+      <span class="res__why">The week list and the instructors.</span></span>
+      <span class="res__meta">the source of truth</span></a></li>
+    <li><a class="res" href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBYSzaAFqpyQKqmoni-EefS7">
+      <span class="res__kind res__kind--official">Lectures</span>
+      <span class="res__body"><span class="res__name">Computational Thinking — full playlist</span>
+      <span class="res__why">All 134 official lectures on the programme's own channel.</span></span>
+      <span class="res__meta">134 · 38 h</span></a></li>
+  </ul>
+
+  <h3>For tracing and visualising</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://pythontutor.com/">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">Python Tutor</span>
+      <span class="res__why">Paste a short program and step through it with every variable visible. Translate the week's pseudocode into Python and watch it run — the single most useful habit in this course.</span></span>
+      <span class="res__meta">browser</span></a></li>
+    <li><a class="res" href="https://visualgo.net/en/sorting">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">VisuAlgo · Sorting</span>
+      <span class="res__why">Insertion sort, animated, with the comparison count shown. Week 5 in five minutes.</span></span>
+      <span class="res__meta">browser</span></a></li>
+    <li><a class="res" href="https://visualgo.net/en/dfsbfs">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">VisuAlgo · DFS and BFS</span>
+      <span class="res__why">Draw your own graph and walk it. Covers weeks 7 to 9, and Maths 1's weeks 10–11 too.</span></span>
+      <span class="res__meta">browser</span></a></li>
+    <li><a class="res" href="https://app.diagrams.net/">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">diagrams.net</span>
+      <span class="res__why">Free flowchart editor with the standard shapes. Drawing a flowchart properly once is worth more than watching week 1 twice.</span></span>
+      <span class="res__meta">browser</span></a></li>
+  </ul>
+
+  <h3>For the wider picture</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://ocw.mit.edu/courses/6-0001-introduction-to-computer-science-and-programming-in-python-fall-2016/">
+      <span class="res__kind">Course</span>
+      <span class="res__body"><span class="res__name">MIT OCW 6.0001</span>
+      <span class="res__why">Free lectures and problem sets covering the same control flow and data structures, with code you can run. Good second pass on weeks 1–9.</span></span>
+      <span class="res__meta">free</span></a></li>
+    <li><a class="res" href="https://pages.cs.wisc.edu/~remzi/OSTEP/">
+      <span class="res__kind">Free book</span>
+      <span class="res__body"><span class="res__name">Operating Systems: Three Easy Pieces</span>
+      <span class="res__why">Only for week 11, and only if the concurrency vocabulary bothers you. The chapters on threads, locks and deadlock are free and unusually readable.</span></span>
+      <span class="res__meta">PDF</span></a></li>
+  </ul>
+</section>
+
+<section class="chapter" id="week1">
+  <div class="chapter__head">
+    <span class="chapter__no">07</span>
+    <div>
+      <h2 class="chapter__title">What to do in week one</h2>
+      <span class="chapter__sub">Term starts 2 October 2026</span>
+    </div>
+  </div>
+
+  <ol class="plan">
+    <li><b>Buy a notebook for traces</b>Not a file — paper. Every pseudocode question you meet, write the variable table out by hand. This is the whole course.</li>
+    <li><b>Learn the three flowchart shapes on day one</b>Rectangle for a step, diamond for a decision, rounded box for start and end. Week 1 assumes them from the first lecture.</li>
+    <li><b>Set up Python Tutor</b>Type the week's pseudocode as Python and step through it. Having the answer checked changes how fast you learn.</li>
+    <li><b>Do the assignments — all of them</b>There is no textbook. The weekly problems are the only practice set that exists.</li>
+    <li><b>Start a glossary now</b>Every named term — side effect, parameter, binning, atomicity — one line each. By week 11 you will have the hardest week already written.</li>
+    <li><b>Check your course page's grading section</b>Everything here is from the May 2026 document. The September 2026 one was not published when this was written.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="../english1/">
+      <span>← Previous</span>
+      <b>English 1</b>
+    </a>
+    <a href="../stats1/">
+      <span>Next in the pathway →</span>
+      <b>Statistics 1</b>
+    </a>
+  </nav>
+</section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="foot__made">Basecamp</p>
+      <p>The Foundation-level field guide for the IIT&nbsp;Madras BS in Data Science and Applications.<br>Made by Angad Jangir.</p>
+    </div>
+    <div>
+      <h4>This course</h4>
+      <ul>
+        <li><a href="https://study.iitm.ac.in/ds/course_pages/BSCS1001.html">Official course page</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBYSzaAFqpyQKqmoni-EefS7">Lecture playlist</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Basecamp</h4>
+      <ul>
+        <li><a href="../#subjects">All eight courses</a></li>
+        <li><a href="../#rules">How Foundation is graded</a></li>
+        <li><a href="../#term">Sep 2026 dates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Checked</h4>
+      <ul>
+        <li>23 September 2026</li>
+        <li><a href="../docs/sources.html">Where every fact came from</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/tracer.js"></script>
+</body>
+</html>
