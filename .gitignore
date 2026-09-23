@@ -1,0 +1,7 @@
+research/
+memory/
+tests/node_modules/
+tests/shots/
+.DS_Store
+Thumbs.db
+*.log

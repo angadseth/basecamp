@@ -1,0 +1,127 @@
+/* Basecamp — shared tokens.
+   The hub owns these values. Each subject page loads assets/subjects/<slug>.css
+   AFTER this file and overrides the palette, the fonts and the motif.
+   Everything structural (scale, rhythm, radii, motion) stays shared, so eight
+   very different-looking pages still read as one site. */
+
+:root {
+  color-scheme: light dark;
+
+  /* ---- Type ------------------------------------------------------------ */
+  /* Subjects override --font-display / --font-text / --font-mono only. */
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "Newsreader", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fluid scale, 1.25 minor third at the small end, opening up on wide screens. */
+  --t--1: clamp(0.75rem, 0.72rem + 0.15vw, 0.82rem);
+  --t-0: clamp(0.94rem, 0.90rem + 0.20vw, 1.05rem);
+  --t-1: clamp(1.13rem, 1.06rem + 0.33vw, 1.31rem);
+  --t-2: clamp(1.35rem, 1.23rem + 0.58vw, 1.72rem);
+  --t-3: clamp(1.62rem, 1.40rem + 1.05vw, 2.36rem);
+  --t-4: clamp(1.94rem, 1.55rem + 1.90vw, 3.24rem);
+  --t-5: clamp(2.33rem, 1.65rem + 3.35vw, 4.45rem);
+  --t-6: clamp(2.80rem, 1.60rem + 5.90vw, 6.10rem);
+
+  --lh-tight: 1.04;
+  --lh-snug: 1.22;
+  --lh-text: 1.62;
+
+  /* ---- Space ----------------------------------------------------------- */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+  --s-9: 7rem;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --measure: 68ch;
+  --wrap: 78rem;
+  --wrap-narrow: 46rem;
+
+  /* ---- Colour ---------------------------------------------------------- */
+  /* Hub identity: warm survey paper, graphite ink, one signal orange.
+     The accent has exactly one job — "this is where you are / do this next". */
+  --paper: #f4f1e9;
+  --paper-2: #ebe7dc;
+  --paper-3: #e0dbcc;
+  --ink: #15181a;
+  --ink-2: #3f4549;
+  --ink-3: #6d757a;
+  --rule: #cfc9b9;
+  --rule-soft: #ded8c9;
+
+  --accent: #d94f22;
+  --accent-ink: #ffffff;
+  --accent-soft: #f6ddd2;
+
+  /* A quiet second hue for contour lines, plot grids and chart fills.
+     Never used for emphasis — that is the accent's job alone. */
+  --trace: #6f7f6a;
+  --trace-soft: #b9c3b2;
+
+  --shadow-1: 0 1px 2px rgb(21 24 26 / 0.05), 0 2px 8px rgb(21 24 26 / 0.04);
+  --shadow-2: 0 2px 4px rgb(21 24 26 / 0.06), 0 12px 32px rgb(21 24 26 / 0.09);
+
+  --radius-1: 3px;
+  --radius-2: 6px;
+  --radius-3: 12px;
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 220ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101314;
+    --paper-2: #171b1d;
+    --paper-3: #1f2426;
+    --ink: #e9e5da;
+    --ink-2: #b3ada0;
+    --ink-3: #82877f;
+    --rule: #2c3234;
+    --rule-soft: #232829;
+
+    --accent: #ff7043;
+    --accent-ink: #1a0d07;
+    --accent-soft: #35211a;
+
+    --trace: #8fa389;
+    --trace-soft: #3a443a;
+
+    --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
+    --shadow-2: 0 2px 4px rgb(0 0 0 / 0.45), 0 12px 32px rgb(0 0 0 / 0.5);
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #101314;
+  --paper-2: #171b1d;
+  --paper-3: #1f2426;
+  --ink: #e9e5da;
+  --ink-2: #b3ada0;
+  --ink-3: #82877f;
+  --rule: #2c3234;
+  --rule-soft: #232829;
+
+  --accent: #ff7043;
+  --accent-ink: #1a0d07;
+  --accent-soft: #35211a;
+
+  --trace: #8fa389;
+  --trace-soft: #3a443a;
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 0.4), 0 2px 8px rgb(0 0 0 / 0.3);
+  --shadow-2: 0 2px 4px rgb(0 0 0 / 0.45), 0 12px 32px rgb(0 0 0 / 0.5);
+}
+
+/* Each subject sets --subject-accent and --subject-trace; these aliases let
+   shared components pick them up without knowing which subject they are on. */
+:root {
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
