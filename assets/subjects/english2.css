@@ -1,0 +1,162 @@
+/* English 2 — the stage.
+   The course is listening, speaking, presenting and social skills, so the page
+   is a room with a light on it. A spotlight falls from the top, the display
+   face is a poster Bodoni, and the body is the sans you would set a programme
+   note in. Everything a person says is set as a transcript. */
+
+:root {
+  --font-display: "Bodoni Moda", ui-serif, Didot, Georgia, serif;
+  --font-text: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --paper: #faf7f8;
+  --paper-2: #f2ecef;
+  --paper-3: #e8e0e4;
+  --ink: #171015;
+  --ink-2: #463a41;
+  --ink-3: #7a6b73;
+  --rule: #ddd0d6;
+  --rule-soft: #e9dfe4;
+
+  --accent: #a3298a;
+  --accent-ink: #fff5fc;
+  --accent-soft: #f4dcee;
+  --trace: #9a8792;
+
+  --spot: rgb(163 41 138 / 0.09);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #100b0e;
+    --paper-2: #181115;
+    --paper-3: #21171d;
+    --ink: #f4ecf0;
+    --ink-2: #bdaab4;
+    --ink-3: #897680;
+    --rule: #32232b;
+    --rule-soft: #261a20;
+
+    --accent: #e77ac9;
+    --accent-ink: #2a0722;
+    --accent-soft: #3a1932;
+    --trace: #7c6a74;
+
+    --spot: rgb(231 122 201 / 0.10);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #100b0e;
+  --paper-2: #181115;
+  --paper-3: #21171d;
+  --ink: #f4ecf0;
+  --ink-2: #bdaab4;
+  --ink-3: #897680;
+  --rule: #32232b;
+  --rule-soft: #261a20;
+
+  --accent: #e77ac9;
+  --accent-ink: #2a0722;
+  --accent-soft: #3a1932;
+  --trace: #7c6a74;
+
+  --spot: rgb(231 122 201 / 0.10);
+}
+
+/* The spotlight: a single cone from above, fixed so it does not scroll away. */
+body {
+  background-color: var(--paper);
+  background-image: radial-gradient(70% 45% at 50% -8%, var(--spot), transparent 72%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 92%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Poster type: high contrast, generous, a little theatrical. */
+h1, h2 { font-weight: 600; }
+.shero__title { font-size: var(--t-6); line-height: 0.94; letter-spacing: -0.02em; }
+.chapter__title { letter-spacing: -0.01em; }
+.chapter__no { font-family: var(--font-display); font-weight: 600; }
+
+/* Karla runs small; give the body a touch more. */
+body { font-size: clamp(0.98rem, 0.94rem + 0.22vw, 1.1rem); line-height: 1.66; }
+
+/* Spoken lines are set as a transcript: a speaker column and the line itself. */
+.script { margin: var(--s-5) 0; border-left: 2px solid var(--rule); }
+.script__line {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: var(--s-4);
+  padding: var(--s-3) 0 var(--s-3) var(--s-4);
+}
+@media (max-width: 34rem) { .script__line { grid-template-columns: 1fr; gap: var(--s-1); } }
+.script__who {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}
+.script__what { margin: 0; max-width: none; }
+.script__line--good .script__who { color: var(--accent); }
+
+/* ---- The sentence-pattern widget --------------------------------------- */
+
+.pat { display: grid; gap: var(--s-4); }
+.pat__tabs { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.pat__tab {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.pat__tab:hover { border-color: var(--accent); color: var(--ink); }
+.pat__tab[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.pat__stage {
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  padding: var(--s-5);
+  background: var(--paper-2);
+}
+.pat__sent {
+  font-family: var(--font-display);
+  font-size: var(--t-2);
+  line-height: 1.5;
+  margin: 0 0 var(--s-4);
+  max-width: none;
+}
+.el {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 1px;
+  position: relative;
+}
+.el + .el { margin-left: 0; }
+.el__tag {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  line-height: 1.2;
+}
+.pat__why { font-size: var(--t--1); color: var(--ink-2); margin: 0; max-width: none; }
+.pat__why b { color: var(--ink); }
