@@ -79,9 +79,8 @@
       </dl>
     </div>
     <figure class="shero__fig">
-      <div style="padding: var(--s-5); height: 100%; display: grid; align-content: center;">
-<pre class="code" style="margin:0; border-left-width:3px; max-width:none"><span class="com"># the shape of almost every OPPE question</span>
-<span class="kw">def</span> summarise(rows):
+      <div style="padding: var(--s-4); height: 100%; display: grid; align-content: center; min-height: 0;">
+<pre class="code" style="margin:0; border-left-width:3px; max-width:none; font-size:0.76rem; line-height:1.65; padding:var(--s-4)"><span class="kw">def</span> summarise(rows):
     total = <span class="num">0</span>
     <span class="kw">for</span> r <span class="kw">in</span> rows:
         <span class="kw">if</span> r[<span class="str">"ok"</span>]:
@@ -91,7 +90,7 @@
 <span class="prompt">&gt;&gt;&gt;</span> summarise(read_csv(<span class="str">"input.csv"</span>))
 <span class="num">418</span></pre>
       </div>
-      <figcaption class="shero__figcap">read input · loop · condition · print exactly</figcaption>
+      <figcaption class="shero__figcap">the shape of almost every OPPE question</figcaption>
     </figure>
   </div>
 </section>
