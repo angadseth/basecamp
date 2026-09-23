@@ -1,0 +1,521 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematics for Data Science 2 (BSMA1003) — Basecamp</title>
+<meta name="description" content="What Maths 2 actually asks, its eleven weeks of linear algebra and multivariable calculus, the grading formula plus 6 bonus marks, where marks are lost, and every resource worth opening.">
+<meta name="author" content="Angad Jangir">
+<meta name="theme-color" content="#fafbfd">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mathematics for Data Science 2 — Basecamp">
+<meta property="og:description" content="The course the Diploma leans on hardest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&family=Literata:ital,opsz,wght@0,7..72,300..700;1,7..72,300..600&family=Sora:wght@400;500;600;700&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("basecamp.theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="../assets/site/tokens.css">
+<link rel="stylesheet" href="../assets/site/layout.css">
+<link rel="stylesheet" href="../assets/site/components.css">
+<link rel="stylesheet" href="../assets/site/subject.css">
+<link rel="stylesheet" href="../assets/subjects/maths2.css">
+</head>
+<body class="subj subj--maths2">
+<a class="skip" href="#main">Skip to the guide</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Basecamp, the hub">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="var(--ink-3)" stroke-width="2.4">
+          <path d="M32 58c14 0 24-7 24-14S46 30 32 30 8 37 8 44s10 14 24 14Z"/>
+          <path d="M32 47c8 0 14-4 14-7s-6-7-14-7-14 4-14 7 6 7 14 7Z"/>
+        </g>
+        <path d="M32 6v28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 7l16 6-16 6z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Basecamp</span>
+    </a>
+    <span class="brand__ed">05 · Mathematics for Data Science 2</span>
+    <nav class="top__links" aria-label="Site">
+      <a class="btn" href="../#subjects"><span class="btn__label">All eight</span></a>
+      <button class="btn" id="theme-btn" type="button" aria-label="Change colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2v14a7 7 0 0 1 0-14z"/></svg>
+        <span id="theme-txt">Auto</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="shero">
+  <div class="wrap shero__inner">
+    <div>
+      <a class="shero__up" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Basecamp
+      </a>
+      <p class="shero__code">BSMA1003 · 4 credits · Foundation</p>
+      <h1 class="shero__title">Mathematics for<br>Data Science 2</h1>
+      <p class="shero__lede">
+        Linear algebra done properly, then multivariable calculus. <b>The single
+        most load-bearing course in the Foundation level</b> — every machine
+        learning course in the Diploma is built on top of it.
+      </p>
+      <dl class="facts">
+        <div><dt>Lectures</dt><dd>111 <small>· 32 h</small></dd></div>
+        <div><dt>Prerequisite</dt><dd>Maths 1</dd></div>
+        <div><dt>Bonus marks</dt><dd>up to 6</dd></div>
+        <div><dt>Unlocks</dt><dd>Stats 2 (co-req)</dd></div>
+      </dl>
+    </div>
+    <figure class="shero__fig">
+      <div style="padding: var(--s-5); height: 100%; display: grid; align-content: center;">
+        <svg viewBox="0 0 360 260" aria-label="The unit basis vectors in blue and their images under a shear in orange.">
+          <defs>
+            <marker id="h-b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--accent)"/></marker>
+            <marker id="h-i" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--image)"/></marker>
+          </defs>
+          <g class="lin__grid">
+            <path d="M20 60h320M20 110h320M20 160h320M20 210h320M70 20v220M130 20v220M190 20v220M250 20v220M310 20v220"/>
+          </g>
+          <polygon class="lin__area" points="130,160 190,160 250,110 190,110"/>
+          <g class="lin__axis"><path d="M20 160h320M130 20v220"/></g>
+          <line class="lin__vec-i" x1="130" y1="160" x2="190" y2="160" marker-end="url(#h-b)"/>
+          <line class="lin__vec-j" x1="130" y1="160" x2="130" y2="110" marker-end="url(#h-b)"/>
+          <line class="lin__vec-fi" x1="130" y1="160" x2="190" y2="160" marker-end="url(#h-i)"/>
+          <line class="lin__vec-fj" x1="130" y1="160" x2="190" y2="110" marker-end="url(#h-i)"/>
+          <text x="196" y="176" font-family="var(--font-mono)" font-size="11" fill="var(--ink-3)">e₁</text>
+          <text x="198" y="104" font-family="var(--font-mono)" font-size="11" fill="var(--image)">Ae₂</text>
+        </svg>
+      </div>
+      <figcaption class="shero__figcap">week 5 · a shear keeps area, so det = 1</figcaption>
+    </figure>
+  </div>
+</section>
+
+<nav class="toc" aria-label="Chapters">
+  <div class="wrap">
+    <ul class="toc__list">
+      <li><a href="#asks">What it asks</a></li>
+      <li><a href="#map">The eleven weeks</a></li>
+      <li><a href="#lin">A matrix, moved</a></li>
+      <li><a href="#grading">How it is graded</a></li>
+      <li><a href="#loss">Where marks go</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#week1">Your first week</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="chapter" id="asks">
+  <div class="chapter__head">
+    <span class="chapter__no">01</span>
+    <div>
+      <h2 class="chapter__title">What this course actually asks</h2>
+      <span class="chapter__sub">Definitions you can use, not definitions you can recite</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>
+        Maths 2 is taught by <b>Sarang S Sane</b> of the IIT Madras mathematics
+        department, and it is the first course in the programme that is taught
+        like a university mathematics course. Weeks 3 to 8 are about vector
+        spaces: definitions, proofs that something is or is not a basis,
+        arguments about dimension.
+      </p>
+      <p>
+        That is a real change of gear. In Maths 1 you computed. Here you are
+        asked things like "is this set linearly independent" and "what is the
+        kernel of this map", and the answer is an argument, not a number. The
+        students who struggle are usually the ones trying to memorise the
+        definitions rather than <em>use</em> them on small examples.
+      </p>
+      <div class="note">
+        <p>
+          <strong>Everything here returns.</strong> Rank, nullity, orthogonality,
+          Gram–Schmidt, gradients and the Hessian are the working vocabulary of
+          Machine Learning Foundations and Techniques. Time spent here is repaid
+          twice.
+        </p>
+      </div>
+      <p>
+        Weeks 9 to 11 change subject again, to multivariable calculus — partial
+        derivatives, directional derivatives, the tangent plane, critical points
+        and the Hessian. That block is the direct ancestor of gradient descent.
+      </p>
+    </div>
+    <aside class="cols__side">
+      <h4>In one line</h4>
+      <p>Vector spaces and linear maps, then calculus in more than one variable.</p>
+      <h4>Book</h4>
+      <p>A Linear Algebra volume is downloadable from the course page. No commercial text is prescribed.</p>
+      <h4>Requisites</h4>
+      <p>Maths 1 is a hard prerequisite. Statistics 2 lists Maths 2 as a co-requisite, so they are usually taken together.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="map">
+  <div class="chapter__head">
+    <span class="chapter__no">02</span>
+    <div>
+      <h2 class="chapter__title">The eleven weeks</h2>
+      <span class="chapter__sub">Topics quoted from the official course page</span>
+    </div>
+  </div>
+
+  <p>
+    Two blocks: <b>weeks 1–8</b> are linear algebra, <b>weeks 9–11</b> are
+    multivariable calculus. The course page describes this as
+    "eleven weeks of coursework", one fewer than the other Foundation courses.
+  </p>
+
+  <div class="weeks">
+    <div class="week"><span class="week__n">W1</span><p class="week__t"><b>Vectors and matrices.</b> Vectors; matrices; systems of linear equations; determinants.</p></div>
+    <div class="week"><span class="week__n">W2</span><p class="week__t"><b>Solving linear equations.</b> Cramer's rule; solutions with an invertible coefficient matrix; echelon form; row reduction; Gaussian elimination.<span class="week__meta">row reduction is the workhorse of the whole course — get fast at it early</span></p></div>
+    <div class="week"><span class="week__n">W3</span><p class="week__t"><b>Vector spaces.</b> Introduction, properties, linear dependence, linear independence.<span class="week__meta">where the course becomes abstract</span></p></div>
+    <div class="week"><span class="week__n">W4</span><p class="week__t"><b>Basis and dimension.</b> What a basis is, finding bases, rank and dimension.</p></div>
+    <div class="week"><span class="week__n">W5</span><p class="week__t"><b>Rank and nullity</b> of a matrix; introduction to linear transformation.</p></div>
+    <div class="week"><span class="week__n">W6</span><p class="week__t"><b>Linear transformations,</b> kernel and image.</p></div>
+    <div class="week week--gate"><span class="week__n">W7</span><p class="week__t"><b>Equivalent and similar matrices;</b> introduction to inner products.<span class="week__meta">last week that counts toward end-term eligibility</span></p></div>
+    <div class="week"><span class="week__n">W8</span><p class="week__t"><b>Orthogonality and orthonormality;</b> the Gram–Schmidt method.</p></div>
+    <div class="week"><span class="week__n">W9</span><p class="week__t"><b>Multivariable functions.</b> Partial derivatives; limit, continuity and directional derivatives.</p></div>
+    <div class="week"><span class="week__n">W10</span><p class="week__t"><b>Directional ascent and descent,</b> the tangent (hyper)plane, critical points.<span class="week__meta">this is gradient descent, one course early</span></p></div>
+    <div class="week"><span class="week__n">W11</span><p class="week__t"><b>Higher order partial derivatives,</b> the Hessian matrix and local extrema, differentiability.</p></div>
+  </div>
+
+  <div class="callout">
+    <p class="callout__head">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg>
+      A wording mismatch worth knowing about
+    </p>
+    <p>
+      The course page lists <b>eleven</b> weeks. The May 2026 grading document
+      still carries the standard line that "W11/W12 contents will be included for
+      the final exam". Treat week 11 as fully examinable and check your course
+      announcements for whether a twelfth revision week exists this term.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="lin">
+  <div class="chapter__head">
+    <span class="chapter__no">03</span>
+    <div>
+      <h2 class="chapter__title">Weeks 1 to 6, in one picture</h2>
+      <span class="chapter__sub">Determinant, rank, nullity and invertibility are one fact</span>
+    </div>
+  </div>
+
+  <p>
+    A 2×2 matrix is a thing that moves the plane. Blue is the standard basis,
+    orange is where the matrix sends it, and the shaded area is the image of the
+    unit square. Drag the entries until the determinant hits zero and watch all
+    four numbers change at once — that is the theorem the course spends six
+    weeks proving.
+  </p>
+
+  <div class="widget">
+    <div class="widget__head">
+      <h3>A = <span class="mat"><span id="m2-l-a">1</span><span id="m2-l-b">0</span><span id="m2-l-c">0</span><span id="m2-l-d">1</span></span></h3>
+      <span class="widget__hint">drag the four entries</span>
+    </div>
+    <div class="widget__body">
+      <div class="lin">
+        <div class="lin__stage" id="m2-stage"></div>
+        <div>
+          <div class="widget__controls">
+            <div>
+              <label for="m2-a">a = <output id="m2-a-out">1</output></label>
+              <input type="range" id="m2-a" min="-30" max="30" step="1" value="10">
+            </div>
+            <div>
+              <label for="m2-b">b = <output id="m2-b-out">0</output></label>
+              <input type="range" id="m2-b" min="-30" max="30" step="1" value="0">
+            </div>
+            <div>
+              <label for="m2-c">c = <output id="m2-c-out">0</output></label>
+              <input type="range" id="m2-c" min="-30" max="30" step="1" value="0">
+            </div>
+            <div>
+              <label for="m2-d">d = <output id="m2-d-out">1</output></label>
+              <input type="range" id="m2-d" min="-30" max="30" step="1" value="10">
+            </div>
+          </div>
+          <dl class="lin__facts" id="m2-facts"></dl>
+          <p style="margin: var(--s-4) 0 0; display: flex; gap: var(--s-2); flex-wrap: wrap;" id="m2-presets">
+            <button class="btn" type="button" data-m="1,0,0,1">identity</button>
+            <button class="btn" type="button" data-m="1,1,0,1">shear</button>
+            <button class="btn" type="button" data-m="0,-1,1,0">rotate 90°</button>
+            <button class="btn" type="button" data-m="1,2,2,4">singular</button>
+            <button class="btn" type="button" data-m="2,0,0,-1">flip + stretch</button>
+          </p>
+        </div>
+      </div>
+      <p class="widget__read" id="m2-read"></p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p>
+      <strong>Try "singular".</strong> The whole plane collapses onto a line: the
+      columns are multiples of each other, the determinant is 0, the rank drops
+      to 1, and a whole line of vectors gets sent to the origin. Rank + nullity
+      = 2 always, which is the rank–nullity theorem in week 5.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="grading">
+  <div class="chapter__head">
+    <span class="chapter__no">04</span>
+    <div>
+      <h2 class="chapter__title">How it is graded</h2>
+      <span class="chapter__sub">May 2026 grading document · confirm against your course page</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>The standard formula, with the largest bonus in the Foundation level:</p>
+
+      <div class="formula">
+        T = max( <b>0.6</b>F + <b>0.3</b>·max(Qz1, Qz2),
+                 &nbsp;<b>0.45</b>F + <b>0.25</b>Qz1 + <b>0.3</b>Qz2 ) + B<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;capped at 100, where <b>B is out of 6</b>
+      </div>
+
+      <h3>The six bonus marks</h3>
+      <p>
+        Three extra activities, <b>2 marks each</b>, released on the portal during
+        the term. Unlike Statistics, these are straightforward submissions — no
+        peer review requirement is listed. Six marks for three pieces of work is
+        the best return available anywhere in Foundation.
+      </p>
+
+      <h3>The eligibility gate</h3>
+      <p>
+        Average of the <b>best 5 of 8</b> — the first seven weekly assignments
+        plus Mock Quiz 1 — must be <b>40/100 or more</b>, and you must attend at
+        least one quiz. The gate closes at week 7, which here is inner products.
+      </p>
+
+      <div class="callout callout--warn">
+        <p class="callout__head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v5M12 17h.01M10.3 3.9 1.8 18.1A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+          The multivariable block sits outside the gate
+        </p>
+        <p>
+          Weeks 9 to 11 — partial derivatives, gradients, the Hessian — count for
+          nothing in eligibility and a great deal in the end term. They are also
+          the part the Diploma needs most.
+        </p>
+      </div>
+    </div>
+    <aside class="cols__side">
+      <h4>Sep 2026 dates</h4>
+      <p>
+        Quiz 1 — 15 Nov 2026<br>
+        Quiz 2 — 5 Dec 2026 <em>(a Saturday)</em><br>
+        End term — 10 Jan 2027
+      </p>
+      <h4>Bonus windows</h4>
+      <p>
+        In May 2026 the three activities were released across the term with
+        separate submission deadlines. Watch the portal — they are not on the
+        academic calendar.
+      </p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="loss">
+  <div class="chapter__head">
+    <span class="chapter__no">05</span>
+    <div>
+      <h2 class="chapter__title">Where the marks actually go</h2>
+      <span class="chapter__sub">My read, from this course and from what people ask about</span>
+    </div>
+  </div>
+
+  <div class="lossbox">
+    <div class="loss">
+      <span class="loss__n">01</span>
+      <h4>Memorising definitions instead of testing them</h4>
+      <p>
+        "Linearly independent" is not a phrase to recall, it is a check to run.
+        Take any definition in weeks 3 and 4 and immediately try it on a set of
+        two vectors in the plane. If you cannot, you do not have it yet.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">02</span>
+      <h4>Arithmetic slips in row reduction</h4>
+      <p>
+        Week 2's Gaussian elimination is the tool used in half the later
+        questions, and it is pure arithmetic under time pressure. Practise until
+        it is boring; a single sign error invalidates everything downstream.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">03</span>
+      <h4>Gram–Schmidt, forgotten</h4>
+      <p>
+        Week 8 lands after the eligibility window and just before the quiz-2
+        cut-off, so it gets squeezed from both sides. It is also the most
+        mechanical procedure in the course — pure marks if you have done it five
+        times.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">04</span>
+      <h4>Confusing the Hessian's role</h4>
+      <p>
+        In week 11 the gradient finds the critical point and the Hessian
+        classifies it. People compute one and answer the other question.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="resources">
+  <div class="chapter__head">
+    <span class="chapter__no">06</span>
+    <div>
+      <h2 class="chapter__title">Everything worth opening</h2>
+      <span class="chapter__sub">Official first, then the free things that genuinely help</span>
+    </div>
+  </div>
+
+  <p>Every link here was opened and checked on 23 September 2026.</p>
+
+  <h3>Official</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://study.iitm.ac.in/ds/course_pages/BSMA1003.html">
+      <span class="res__kind res__kind--official">Course page</span>
+      <span class="res__body"><span class="res__name">BSMA1003 on study.iitm.ac.in</span>
+      <span class="res__why">The week list, the instructor, and the Linear Algebra volume.</span></span>
+      <span class="res__meta">the source of truth</span></a></li>
+    <li><a class="res" href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBboGlwPVSsWP8loAJCLrKc8">
+      <span class="res__kind res__kind--official">Lectures</span>
+      <span class="res__body"><span class="res__name">Mathematics for Data Science II — full playlist</span>
+      <span class="res__why">All 111 official lectures on the programme's own channel.</span></span>
+      <span class="res__meta">111 · 32 h</span></a></li>
+  </ul>
+
+  <h3>For the linear algebra (weeks 1–8)</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">
+      <span class="res__kind">Video</span>
+      <span class="res__body"><span class="res__name">3Blue1Brown · Essence of linear algebra</span>
+      <span class="res__why">Watch the whole thing in week 1, before the definitions arrive. It is the picture that every later proof is describing.</span></span>
+      <span class="res__meta">15 videos</span></a></li>
+    <li><a class="res" href="https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/">
+      <span class="res__kind">Course</span>
+      <span class="res__body"><span class="res__name">MIT 18.06 · Gilbert Strang</span>
+      <span class="res__why">The standard first linear algebra course, free, with problem sets and exams. Use it when a definition in weeks 3–5 will not land.</span></span>
+      <span class="res__meta">free</span></a></li>
+    <li><a class="res" href="https://textbooks.math.gatech.edu/ila/">
+      <span class="res__kind">Free book</span>
+      <span class="res__body"><span class="res__name">Interactive Linear Algebra · Georgia Tech</span>
+      <span class="res__why">A free textbook with figures you can drag. Its chapters on span, independence, bases and rank map almost exactly onto weeks 3–5.</span></span>
+      <span class="res__meta">web · free</span></a></li>
+  </ul>
+
+  <h3>For the calculus (weeks 9–11)</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://tutorial.math.lamar.edu/Classes/CalcIII/CalcIII.aspx">
+      <span class="res__kind">Notes</span>
+      <span class="res__body"><span class="res__name">Paul's Online Math Notes · Calculus III</span>
+      <span class="res__why">Partial derivatives, directional derivatives, tangent planes and critical points, with fully worked practice problems.</span></span>
+      <span class="res__meta">free</span></a></li>
+    <li><a class="res" href="https://mml-book.github.io/">
+      <span class="res__kind">Free book</span>
+      <span class="res__body"><span class="res__name">Mathematics for Machine Learning</span>
+      <span class="res__why">Free PDF. Chapters 2 to 5 are this course, written for the reason you are taking it. Read it if you want to see where all of this is going.</span></span>
+      <span class="res__meta">PDF · free</span></a></li>
+  </ul>
+</section>
+
+<section class="chapter" id="week1">
+  <div class="chapter__head">
+    <span class="chapter__no">07</span>
+    <div>
+      <h2 class="chapter__title">What to do in week one</h2>
+      <span class="chapter__sub">Term starts 2 October 2026</span>
+    </div>
+  </div>
+
+  <ol class="plan">
+    <li><b>Watch Essence of linear algebra first</b>All fifteen videos, before week 3. Three hours that change how the next eight weeks feel.</li>
+    <li><b>Drill row reduction until it is dull</b>Ten systems by hand. Week 2's technique is used in weeks 4, 5, 6 and 8.</li>
+    <li><b>Find the three bonus activities</b>Six marks, and the easiest six in Foundation. Put the deadlines in your calendar as they appear.</li>
+    <li><b>Test every definition on two vectors</b>When "linearly independent" is defined, immediately check a dependent pair and an independent pair by hand.</li>
+    <li><b>Do not let weeks 9–11 drift</b>They are outside eligibility, heavily examined, and the direct prerequisite for gradient descent later.</li>
+    <li><b>Check your course page's grading section</b>Everything here is from the May 2026 document. The September 2026 one was not published when this was written.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="../stats1/">
+      <span>← Previous</span>
+      <b>Statistics 1</b>
+    </a>
+    <a href="../english2/">
+      <span>Next in the pathway →</span>
+      <b>English 2</b>
+    </a>
+  </nav>
+</section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="foot__made">Basecamp</p>
+      <p>The Foundation-level field guide for the IIT&nbsp;Madras BS in Data Science and Applications.<br>Made by Angad Jangir.</p>
+    </div>
+    <div>
+      <h4>This course</h4>
+      <ul>
+        <li><a href="https://study.iitm.ac.in/ds/course_pages/BSMA1003.html">Official course page</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBboGlwPVSsWP8loAJCLrKc8">Lecture playlist</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Basecamp</h4>
+      <ul>
+        <li><a href="../#subjects">All eight courses</a></li>
+        <li><a href="../#rules">How Foundation is graded</a></li>
+        <li><a href="../#term">Sep 2026 dates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Checked</h4>
+      <ul>
+        <li>23 September 2026</li>
+        <li><a href="../docs/sources.html">Where every fact came from</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/lintrans.js"></script>
+</body>
+</html>
