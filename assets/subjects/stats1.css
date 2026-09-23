@@ -1,0 +1,163 @@
+/* Statistics for Data Science 1 — the data desk.
+   A newsroom's statistics page: newsprint stock, a headline serif, column
+   rules, and one editorial red-orange for the bar that matters. The furniture
+   of the page is charts, because the first half of the course is charts. */
+
+:root {
+  --font-display: "Playfair Display", ui-serif, Georgia, serif;
+  --font-text: "Spectral", ui-serif, Georgia, serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+
+  --paper: #f5f3ec;
+  --paper-2: #edeae1;
+  --paper-3: #e3dfd3;
+  --ink: #16150f;
+  --ink-2: #444236;
+  --ink-3: #78756a;
+  --rule: #cfcabb;
+  --rule-soft: #ded9cb;
+
+  --accent: #bf4409;
+  --accent-ink: #fff6ef;
+  --accent-soft: #f6dfd0;
+  --trace: #8f8b78;
+
+  --bar: #bf4409;
+  --bar-soft: #ddb79a;
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131210;
+    --paper-2: #1a1815;
+    --paper-3: #23201b;
+    --ink: #f0ece1;
+    --ink-2: #b6b1a2;
+    --ink-3: #847f71;
+    --rule: #322e27;
+    --rule-soft: #26231d;
+
+    --accent: #f0a44a;
+    --accent-ink: #2a1705;
+    --accent-soft: #3a2a15;
+    --trace: #7a7466;
+
+    --bar: #f0a44a;
+    --bar-soft: #4a3a22;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131210;
+  --paper-2: #1a1815;
+  --paper-3: #23201b;
+  --ink: #f0ece1;
+  --ink-2: #b6b1a2;
+  --ink-3: #847f71;
+  --rule: #322e27;
+  --rule-soft: #26231d;
+
+  --accent: #f0a44a;
+  --accent-ink: #2a1705;
+  --accent-soft: #3a2a15;
+  --trace: #7a7466;
+
+  --bar: #f0a44a;
+  --bar-soft: #4a3a22;
+}
+
+body { background-color: var(--paper); }
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 93%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Newsroom headlines: high contrast, tight, a touch of drama. */
+h1, h2 { font-weight: 700; letter-spacing: -0.015em; }
+.shero__title { line-height: 1.0; letter-spacing: -0.025em; }
+.chapter__title { letter-spacing: -0.02em; }
+.chapter__no { font-family: var(--font-display); font-weight: 900; }
+
+/* Standfirst: a paper's opening paragraph is set larger and leaded. */
+.shero__lede { font-size: var(--t-2); line-height: 1.38; }
+
+/* Column rules between the body and the margin notes. */
+@media (min-width: 62rem) {
+  .cols { column-gap: var(--s-7); }
+  .cols__side {
+    border-left: 1px solid var(--rule);
+    padding-left: var(--s-5);
+  }
+}
+
+/* Deck labels, set in small caps the way a chart credit is. */
+.res__kind, .eyebrow, .chapter__sub { letter-spacing: 0.08em; }
+
+/* ---- The five-number widget -------------------------------------------- */
+
+.fivenum { display: grid; gap: var(--s-5); }
+@media (min-width: 50rem) { .fivenum { grid-template-columns: 1fr 1fr; } }
+
+.fivenum__in {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--t-0);
+  padding: var(--s-3) var(--s-4);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+  min-height: 5rem;
+  line-height: 1.6;
+}
+.fivenum__in:focus-visible { border-color: var(--accent); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  margin-top: var(--s-4);
+}
+.stats div { background: var(--paper); padding: var(--s-3) var(--s-4); }
+.stats dt {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--s-1);
+}
+.stats dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--t-1);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.stats div.is-lead dd { color: var(--accent); }
+
+.chartbox { border: 1px solid var(--rule-soft); border-radius: var(--radius-2); padding: var(--s-4); background: var(--paper); }
+.chartbox + .chartbox { margin-top: var(--s-4); }
+.chartbox h4 {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--s-3);
+}
+.chartbox svg { width: 100%; height: auto; display: block; overflow: visible; }
+.bar { fill: var(--bar-soft); }
+.bar--lead { fill: var(--bar); }
+.box__whisker { stroke: var(--ink-3); stroke-width: 1.4; }
+.box__box { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.6; }
+.box__med { stroke: var(--accent); stroke-width: 2.6; }
+.box__lab { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-3); text-anchor: middle; }
