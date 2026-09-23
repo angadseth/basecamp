@@ -1,0 +1,235 @@
+/* Basecamp — the layout every subject page shares.
+   Nothing in this file picks a colour or a typeface: that is the job of
+   assets/subjects/<slug>.css, which loads after it. Keeping the two apart is
+   what lets eight pages look nothing alike and still behave identically. */
+
+/* ---- Subject hero ------------------------------------------------------ */
+
+.shero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--rule-soft);
+  padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2.5rem, 5vw, 4rem);
+}
+.shero__inner {
+  position: relative;
+  display: grid;
+  gap: var(--s-6);
+  align-items: center;
+}
+@media (min-width: 62rem) {
+  .shero__inner { grid-template-columns: 1.05fr 0.95fr; gap: var(--s-7); }
+}
+
+.shero__up {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  text-decoration: none;
+  margin-bottom: var(--s-4);
+}
+.shero__up:hover { color: var(--subject-accent); }
+.shero__up svg { width: 0.85em; height: 0.85em; }
+
+.shero__code {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--subject-accent);
+  margin-bottom: var(--s-3);
+}
+.shero__title {
+  font-size: var(--t-5);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: var(--s-4);
+}
+.shero__lede {
+  font-size: var(--t-1);
+  color: var(--ink-2);
+  max-width: 42ch;
+  margin-bottom: var(--s-5);
+  text-wrap: pretty;
+}
+.shero__lede b { color: var(--ink); font-weight: 650; }
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5) var(--s-6);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--rule);
+  max-width: 44ch;
+}
+.facts div { min-width: 5rem; }
+.facts dt {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-bottom: var(--s-1);
+}
+.facts dd {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--t-1);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.facts dd small { font-weight: 500; font-size: 0.6em; color: var(--ink-3); }
+
+/* The signature figure. Each theme fills it differently; the frame is shared. */
+.shero__fig {
+  position: relative;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  background: var(--paper-2);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  min-height: 15rem;
+}
+.shero__fig canvas, .shero__fig svg { width: 100%; height: 100%; display: block; }
+.shero__figcap {
+  position: absolute;
+  left: var(--s-4);
+  bottom: var(--s-3);
+  right: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+/* ---- The "what you get" strip ------------------------------------------ */
+
+.strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1px;
+  background: var(--rule-soft);
+  border-block: 1px solid var(--rule-soft);
+}
+.strip__cell { background: var(--paper); padding: var(--s-4) var(--gutter); }
+.strip__k {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  display: block;
+  margin-bottom: var(--s-1);
+}
+.strip__v { font-family: var(--font-display); font-weight: 650; font-size: var(--t-0); }
+
+/* ---- Body -------------------------------------------------------------- */
+
+.subj main > .wrap > .chapter:first-of-type { padding-top: var(--s-7); }
+
+.lossbox {
+  display: grid;
+  gap: var(--s-4);
+  margin: var(--s-5) 0;
+}
+@media (min-width: 48rem) { .lossbox { grid-template-columns: repeat(2, 1fr); } }
+.loss {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--s-5);
+  background: var(--paper);
+  position: relative;
+}
+.loss__n {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--subject-accent);
+  font-weight: 600;
+  margin-bottom: var(--s-2);
+  display: block;
+}
+.loss h4 { font-size: var(--t-1); margin-bottom: var(--s-3); }
+.loss p { font-size: var(--t--1); color: var(--ink-2); margin-bottom: 0; max-width: none; }
+.loss p + p { margin-top: var(--s-3); }
+
+/* ---- Week-one plan ----------------------------------------------------- */
+
+.plan {
+  counter-reset: pstep;
+  list-style: none;
+  padding: 0;
+  margin: var(--s-5) 0;
+  max-width: none;
+  display: grid;
+  gap: var(--s-4);
+}
+@media (min-width: 48rem) { .plan { grid-template-columns: repeat(2, 1fr); } }
+.plan li {
+  counter-increment: pstep;
+  margin: 0;
+  padding: var(--s-4) var(--s-4) var(--s-4) var(--s-6);
+  border-left: 2px solid var(--subject-accent);
+  background: var(--paper-2);
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+  position: relative;
+  font-size: var(--t--1);
+}
+.plan li::before {
+  content: counter(pstep);
+  position: absolute;
+  left: var(--s-3);
+  top: var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  font-weight: 600;
+  color: var(--subject-accent);
+}
+.plan b { display: block; font-family: var(--font-display); font-size: var(--t-0); margin-bottom: var(--s-1); }
+
+/* ---- Widget frame ------------------------------------------------------ */
+
+.widget {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-3);
+  background: var(--paper);
+  overflow: hidden;
+  margin: var(--s-5) 0;
+}
+.widget__head {
+  padding: var(--s-4) var(--s-5);
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--paper-2);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.widget__head h3 { font-size: var(--t-1); }
+.widget__hint { font-family: var(--font-mono); font-size: var(--t--1); color: var(--ink-3); }
+.widget__body { padding: var(--s-5); }
+.widget__controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--s-4) var(--s-5);
+  margin-top: var(--s-4);
+}
+.widget__controls label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-2);
+  margin-bottom: var(--s-2);
+}
+.widget__controls output { color: var(--subject-accent); font-weight: 600; }
+.widget__controls input[type="range"] { width: 100%; accent-color: var(--subject-accent); }
+.widget__read {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-2);
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--rule);
+  line-height: 1.8;
+}
+.widget__read b { color: var(--subject-accent); }
+.widget canvas { width: 100%; height: auto; display: block; border-radius: var(--radius-2); }
