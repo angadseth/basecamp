@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sources — Basecamp</title>
+<meta name="description" content="Where every fact on Basecamp comes from, what is opinion rather than record, and what was left out on purpose.">
+<meta name="author" content="Angad Jangir">
+<meta name="theme-color" content="#f4f1e9">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("basecamp.theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="../assets/site/tokens.css">
+<link rel="stylesheet" href="../assets/site/layout.css">
+<link rel="stylesheet" href="../assets/site/components.css">
+<link rel="stylesheet" href="../assets/site/subject.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the sources</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Basecamp, the hub">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="var(--ink-3)" stroke-width="2.4">
+          <path d="M32 58c14 0 24-7 24-14S46 30 32 30 8 37 8 44s10 14 24 14Z"/>
+          <path d="M32 47c8 0 14-4 14-7s-6-7-14-7-14 4-14 7 6 7 14 7Z"/>
+        </g>
+        <path d="M32 6v28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 7l16 6-16 6z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Basecamp</span>
+    </a>
+    <span class="brand__ed">Sources</span>
+    <nav class="top__links" aria-label="Site">
+      <a class="btn" href="../#subjects"><span class="btn__label">All eight</span></a>
+      <button class="btn" id="theme-btn" type="button" aria-label="Change colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2v14a7 7 0 0 1 0-14z"/></svg>
+        <span id="theme-txt">Auto</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap wrap--narrow">
+
+<section class="chapter" id="top">
+  <div class="chapter__head">
+    <span class="chapter__no">§</span>
+    <div>
+      <h2 class="chapter__title">Where every fact came from</h2>
+      <span class="chapter__sub">Checked 23 September 2026</span>
+    </div>
+  </div>
+
+  <p>
+    Nothing on this site is meant to be taken on trust. Everything below is
+    either an official document, something I read myself and say so, or clearly
+    marked as opinion. Where the official record and this site ever disagree,
+    <b>the official record wins</b> — tell me and I will fix the page.
+  </p>
+
+  <div class="callout callout--warn">
+    <p class="callout__head">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v5M12 17h.01M10.3 3.9 1.8 18.1A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      The most important caveat on this site
+    </p>
+    <p>
+      As of <b>23 September 2026</b>, the <b>September 2026 grading document had
+      not been published</b>. Every formula, eligibility rule and bonus structure
+      on Basecamp is taken from the <b>May 2026</b> document. Terms do change
+      rules — GAA going to zero is proof of that. Read your course's grading
+      page in week 1 and trust it over this site.
+    </p>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="chapter__head">
+    <span class="chapter__no">1</span>
+    <div>
+      <h2 class="chapter__title">Official</h2>
+      <span class="chapter__sub">Primary documents, all opened and read</span>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Fact on the site</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>The eight courses, their codes, 4 credits each, 32 credits total; up to 4 courses per term by CCC; all eight required before any Diploma course</td>
+          <td><a href="https://study.iitm.ac.in/ds/academics.html">study.iitm.ac.in/ds/academics.html</a></td>
+        </tr>
+        <tr>
+          <td>Quiz 1 covers weeks 1–4, Quiz 2 covers weeks 1–8</td>
+          <td>Same page</td>
+        </tr>
+        <tr>
+          <td>Every week-by-week syllabus, quoted verbatim; instructors and their affiliations; prescribed books and downloadable volumes; requisites</td>
+          <td>The eight course pages: <span class="mono">study.iitm.ac.in/ds/course_pages/&lt;CODE&gt;.html</span> for BSMA1001, BSMA1002, BSCS1001, BSHS1001, BSMA1003, BSMA1004, BSCS1002, BSHS1002</td>
+        </tr>
+        <tr>
+          <td><b>GAA weightage for Foundation is 0</b>, with 10 marks of quiz and end-term questions drawn from the assignments</td>
+          <td>May 2026 grading document, "MAJOR CHANGE THIS TIME"</td>
+        </tr>
+        <tr>
+          <td>The standard formula <span class="mono">T = max(0.6F + 0.3·max(Qz1,Qz2), 0.45F + 0.25Qz1 + 0.3Qz2)</span> for Maths 1, English 1, CT, Stats 1, Maths 2, English 2, Stats 2</td>
+          <td>Grading document, the eight per-course sections</td>
+        </tr>
+        <tr>
+          <td>Python's formula <span class="mono">T = 0.15Qz1 + 0.4F + 0.25·max(PE1,PE2) + 0.2·min(PE1,PE2)</span>, no Quiz 2, and the grade table (U / I_OP / I_BOTH / I)</td>
+          <td>Grading document, "Intro to python programming"</td>
+        </tr>
+        <tr>
+          <td>Python eligibility: SCT mandatory; OPPE 1 needs A1–A4 each ≥ 40; OPPE 2 needs A5–A8 each ≥ 40 plus the best-5-of-7 gate; one OPPE ≥ 40 for a grade; OPPE 1 syllabus weeks 1–5, OPPE 2 weeks 1–8</td>
+          <td>Same section</td>
+        </tr>
+        <tr>
+          <td>Using an LLM on a programming assignment is plagiarism and an honour-code violation</td>
+          <td>Grading document, "Academic policies", quoted on the Python page</td>
+        </tr>
+        <tr>
+          <td>End-term eligibility: best 5 of 8 (first 7 weekly assignments + Mock Quiz 1) ≥ 40 <em>and</em> attendance at one quiz; "Mock Quiz 1 scores will be reflected in your dashboard as Mock Assignment"</td>
+          <td>Grading document, per-course sections (updated 15.07.2026)</td>
+        </tr>
+        <tr>
+          <td><b>English 1 and English 2 differ</b>: best 5 of the first 7 weekly assignments only, with no Mock Quiz in the list</td>
+          <td>Grading document, the English 1 and English 2 sections</td>
+        </tr>
+        <tr>
+          <td>Statistics 1 and 2 bonus: 5 marks (3.75 activity + 1.25 quality), peer reviewed, <b>0 if fewer than 5 peer reviews</b>, added only if you pass</td>
+          <td>Grading document, the two statistics sections</td>
+        </tr>
+        <tr>
+          <td>Maths 2 bonus: 6 marks, three activities of 2 each, capped at 100</td>
+          <td>Grading document, "Mathematics for data science 2"</td>
+        </tr>
+        <tr>
+          <td>Mock-test bonus up to 2 marks; only for students who pass; Python's bonus requires the SCT</td>
+          <td>Grading document, "Bonus Marks" and the Python section</td>
+        </tr>
+        <tr>
+          <td>"NONE OF THE ASSIGNMENT DEADLINES WILL BE CHANGED"; no make-up quiz</td>
+          <td>Grading document, assignment deadlines</td>
+        </tr>
+        <tr>
+          <td>The suggested order — Maths 1, English 1, CT, Stats 1, Maths 2, English 2, Python, Stats 2</td>
+          <td>Grading document, "Suggested pathway to register and study Foundation level courses"</td>
+        </tr>
+        <tr>
+          <td>Pass grades S–E; U/WA/WQ fail; I incomplete, and its three kinds</td>
+          <td>Grading document, "Information about course grades"</td>
+        </tr>
+        <tr>
+          <td>Sep 2026 dates: registration 22–23 Sep; term starts 2 Oct; drop window 23–25 Oct; Quiz 1 and the Qualifier 15 Nov; OPPE 1 21–22 Nov; <b>Quiz 2 Saturday 5 Dec</b>; OPPE 2 19–20 Dec and 2–3 Jan; end term 10 Jan 2027; results 18–23 Jan; Qualifier applications close 27 Sep</td>
+          <td>The official Sep 2026 academic calendar image, linked from <a href="https://study.iitm.ac.in/ds/academic_calendar.html">academic_calendar.html</a>. I read the image itself rather than a summary of it.</td>
+        </tr>
+        <tr>
+          <td>Lecture counts and total hours for all eight courses (951 videos, ~309 hours)</td>
+          <td>The eight official playlists on the programme's YouTube channel, listed with <span class="mono">yt-dlp</span> on 23 September 2026. Counts are of the playlists as they stood that day.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="chapter__head">
+    <span class="chapter__no">2</span>
+    <div>
+      <h2 class="chapter__title">Not from an official page</h2>
+      <span class="chapter__sub">Where the site is giving you a view, not a record</span>
+    </div>
+  </div>
+
+  <div class="tablewrap">
+    <table class="data">
+      <thead><tr><th>Claim</th><th>What it actually is</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Grade bands S ≥ 90, A ≥ 80, B ≥ 70, C ≥ 60, D ≥ 50, E ≥ 40 (used by the hub calculator)</td>
+          <td>The programme's usual scale, <b>not</b> taken from the grading document. The calculator says so on the page. Confirm against your course.</td>
+        </tr>
+        <tr>
+          <td>Every "Where the marks actually go" section</td>
+          <td>My own reading of each course and of what people repeatedly get stuck on. Opinion, labelled as such on each page.</td>
+        </tr>
+        <tr>
+          <td>"What to do in week one" plans</td>
+          <td>Advice, not rules. The only hard items in them — the SCT, the assignment deadlines, the peer reviews — are sourced above.</td>
+        </tr>
+        <tr>
+          <td>Quartile convention in the Statistics 1 widget (median of halves, excluding the median when n is odd)</td>
+          <td>The convention in the prescribed Weiss text. Other books differ, and the widget says so.</td>
+        </tr>
+        <tr>
+          <td>Groupings like "weeks 1–6 are algebra, 7–9 calculus, 10–11 graph theory"</td>
+          <td>My grouping of the official week list, to make the shape of a course visible.</td>
+        </tr>
+        <tr>
+          <td>Maths 2's week count</td>
+          <td>The course page says "eleven weeks of coursework" and lists eleven; the grading document still uses the standard "W11/W12" wording. The site flags the mismatch rather than resolving it.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="chapter__head">
+    <span class="chapter__no">3</span>
+    <div>
+      <h2 class="chapter__title">Left out on purpose</h2>
+      <span class="chapter__sub">Things that exist and are not linked here</span>
+    </div>
+  </div>
+
+  <ul>
+    <li><b>Graded-assignment and quiz answer sites.</b> Several exist and are easy to find. They are not linked from any page on this site, and they never will be.</li>
+    <li><b>Anything that would help you break the LLM rule</b> on Python's programming assignments.</li>
+    <li><b>Paid coaching and "solutions" services.</b></li>
+    <li><b>Discourse threads.</b> They are login-only, so they cannot be checked by a reader and are not cited.</li>
+  </ul>
+
+  <p>
+    Every external link on this site was opened and checked on 23 September
+    2026. If one has rotted since, it is a bug — the site would rather drop a
+    link than keep a dead one.
+  </p>
+
+  <p class="mono dim">Made by Angad Jangir.</p>
+
+  <nav class="pager">
+    <a href="../">
+      <span>← Back to</span>
+      <b>Basecamp</b>
+    </a>
+    <a href="../#rules">
+      <span>See it applied →</span>
+      <b>How Foundation is graded</b>
+    </a>
+  </nav>
+</section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="foot__made">Basecamp</p>
+      <p>The Foundation-level field guide for the IIT&nbsp;Madras BS in Data Science and Applications.<br>Made by Angad Jangir.</p>
+    </div>
+    <div>
+      <h4>Official</h4>
+      <ul>
+        <li><a href="https://study.iitm.ac.in/ds/academics.html">Programme academics</a></li>
+        <li><a href="https://study.iitm.ac.in/ds/academic_calendar.html">Academic calendar</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Basecamp</h4>
+      <ul>
+        <li><a href="../#subjects">All eight courses</a></li>
+        <li><a href="../#rules">How Foundation is graded</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Checked</h4>
+      <ul><li>23 September 2026</li></ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
