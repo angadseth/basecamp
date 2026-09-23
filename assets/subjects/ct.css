@@ -1,0 +1,201 @@
+/* Computational Thinking — the blueprint.
+   Light mode is blueprint *paper*: pale, gridded, drawn in navy. Dark mode is
+   the real thing — cyan lines on deep blue. Boxes, diamonds and arrows are the
+   vocabulary of the course, so they are the vocabulary of the page. */
+
+:root {
+  --font-display: "Archivo Narrow", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --paper: #eff4f8;
+  --paper-2: #e4ecf2;
+  --paper-3: #d7e2ea;
+  --ink: #0d1b2a;
+  --ink-2: #33475b;
+  --ink-3: #64798c;
+  --rule: #bfd0dd;
+  --rule-soft: #d3e0ea;
+
+  --accent: #0b7189;
+  --accent-ink: #ffffff;
+  --accent-soft: #d3eaf0;
+  --trace: #7d99ad;
+
+  --blue-line: rgb(11 113 137 / 0.10);
+  --blue-line-2: rgb(11 113 137 / 0.05);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0a1622;
+    --paper-2: #0f1e2e;
+    --paper-3: #16293c;
+    --ink: #e4f1f7;
+    --ink-2: #a8c1d1;
+    --ink-3: #75909f;
+    --rule: #21394f;
+    --rule-soft: #18293a;
+
+    --accent: #4cc4de;
+    --accent-ink: #04222c;
+    --accent-soft: #123441;
+    --trace: #5b7e94;
+
+    --blue-line: rgb(76 196 222 / 0.10);
+    --blue-line-2: rgb(76 196 222 / 0.05);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0a1622;
+  --paper-2: #0f1e2e;
+  --paper-3: #16293c;
+  --ink: #e4f1f7;
+  --ink-2: #a8c1d1;
+  --ink-3: #75909f;
+  --rule: #21394f;
+  --rule-soft: #18293a;
+
+  --accent: #4cc4de;
+  --accent-ink: #04222c;
+  --accent-soft: #123441;
+  --trace: #5b7e94;
+
+  --blue-line: rgb(76 196 222 / 0.10);
+  --blue-line-2: rgb(76 196 222 / 0.05);
+}
+
+/* Drafting grid: 10mm majors with 2mm minors, the way a blueprint is ruled. */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--blue-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue-line) 1px, transparent 1px),
+    linear-gradient(var(--blue-line-2) 1px, transparent 1px),
+    linear-gradient(90deg, var(--blue-line-2) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 92%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Drafting labels: narrow, upper, spaced. */
+.chapter__sub, .eyebrow, .res__kind { text-transform: uppercase; }
+h1, h2, h3 { letter-spacing: -0.005em; }
+.shero__title { font-weight: 700; }
+.chapter__no { font-family: var(--font-mono); font-weight: 500; }
+
+/* Everything boxed gets a drafting corner rather than a rounded one. */
+.callout, .loss, .widget, .shero__fig, .ticket { border-radius: 2px; }
+.res { border-radius: 2px; }
+
+/* ---- The flowchart tracer ---------------------------------------------- */
+
+.trace {
+  display: grid;
+  gap: var(--s-5);
+}
+@media (min-width: 52rem) { .trace { grid-template-columns: 1.25fr 1fr; } }
+
+.trace__code {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  line-height: 1.75;
+  margin: 0;
+  counter-reset: ln;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.trace__ln {
+  display: grid;
+  grid-template-columns: 2.3rem 1fr;
+  gap: var(--s-3);
+  padding: 0.1rem var(--s-3);
+  white-space: pre;
+  overflow-x: auto;
+}
+.trace__ln::before {
+  content: attr(data-n);
+  color: var(--ink-3);
+  text-align: right;
+  opacity: 0.6;
+}
+.trace__ln--on {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+.trace__ln--on::before { color: var(--accent-ink); opacity: 0.8; }
+
+.trace__vars {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  align-self: start;
+  background: var(--paper);
+}
+.trace__vars h4 {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  padding: var(--s-3) var(--s-4);
+  border-bottom: 1px solid var(--rule-soft);
+  background: var(--paper-2);
+  margin: 0;
+}
+.trace__row {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: var(--s-3);
+  padding: var(--s-2) var(--s-4);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  border-bottom: 1px dashed var(--rule-soft);
+}
+.trace__row:last-child { border-bottom: 0; }
+.trace__row b { color: var(--ink-3); font-weight: 400; }
+.trace__row span { color: var(--accent); font-weight: 600; }
+.trace__row--changed span { background: var(--accent-soft); padding: 0 0.3em; border-radius: 2px; }
+
+.trace__bar {
+  display: flex;
+  gap: var(--s-2);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--rule);
+}
+.trace__step {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-left: auto;
+}
+.trace__list {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin: 0 0 var(--s-4);
+  padding: 0;
+  list-style: none;
+}
+.trace__list li {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  margin: 0;
+  color: var(--ink-2);
+}
+.trace__list li.is-at { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.trace__list li.is-done { opacity: 0.45; }
