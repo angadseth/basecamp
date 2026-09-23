@@ -1,0 +1,184 @@
+/* Programming in Python — the REPL.
+   A notebook with the lights on. Mono carries the page: headings, labels and
+   code all sit on the same monospace rhythm, and prose is the only thing set
+   in a proportional face. Python's own yellow is the accent; it marks the
+   prompt, the caret and the one number that decides whether you get a grade. */
+
+:root {
+  --font-display: "JetBrains Mono", ui-monospace, monospace;
+  --font-text: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --paper: #fbfaf6;
+  --paper-2: #f2f0e8;
+  --paper-3: #e8e5da;
+  --ink: #16160f;
+  --ink-2: #434237;
+  --ink-3: #75736a;
+  --rule: #d6d3c5;
+  --rule-soft: #e3e0d4;
+
+  --accent: #8a6d00;
+  --accent-ink: #fffdf2;
+  --accent-soft: #f6ecc4;
+  --trace: #8f8c7c;
+
+  /* syntax, used only inside code blocks */
+  --syn-kw: #a33a8f;
+  --syn-str: #1d6b3f;
+  --syn-num: #b4530a;
+  --syn-com: #8a8778;
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #12130f;
+    --paper-2: #191a15;
+    --paper-3: #22241c;
+    --ink: #eceadd;
+    --ink-2: #b2b0a2;
+    --ink-3: #807e72;
+    --rule: #2d2f26;
+    --rule-soft: #22241c;
+
+    --accent: #ffd75e;
+    --accent-ink: #201a00;
+    --accent-soft: #332c0c;
+    --trace: #77756a;
+
+    --syn-kw: #e88ad0;
+    --syn-str: #7fd6a0;
+    --syn-num: #ffab6b;
+    --syn-com: #6f6d62;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #12130f;
+  --paper-2: #191a15;
+  --paper-3: #22241c;
+  --ink: #eceadd;
+  --ink-2: #b2b0a2;
+  --ink-3: #807e72;
+  --rule: #2d2f26;
+  --rule-soft: #22241c;
+
+  --accent: #ffd75e;
+  --accent-ink: #201a00;
+  --accent-soft: #332c0c;
+  --trace: #77756a;
+
+  --syn-kw: #e88ad0;
+  --syn-str: #7fd6a0;
+  --syn-num: #ffab6b;
+  --syn-com: #6f6d62;
+}
+
+/* Notebook cells: a faint horizontal rhythm, like a ruled output pane. */
+body {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom, transparent 0 27px, color-mix(in oklab, var(--ink) 3.5%, transparent) 27px 28px);
+}
+
+.top, .toc { background: color-mix(in oklab, var(--paper) 93%, transparent); }
+.shero__fig, .widget, .ticket, .callout, .loss, .res, .week, table.data,
+.strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head { background-color: var(--paper-2); }
+
+/* Mono headings, so the page reads like a terminal session. */
+h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.03em; }
+.shero__title { font-size: var(--t-4); line-height: 1.06; }
+.shero__title::before { content: ">>> "; color: var(--accent); }
+.chapter__title::before { content: "# "; color: var(--ink-3); font-weight: 400; }
+.chapter__no { font-weight: 500; }
+
+/* ---- Code blocks -------------------------------------------------------- */
+
+.code {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  line-height: 1.75;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-2);
+  padding: var(--s-4) var(--s-5);
+  margin: var(--s-5) 0;
+  overflow-x: auto;
+  max-width: var(--measure);
+  white-space: pre;
+}
+.code .kw { color: var(--syn-kw); }
+.code .str { color: var(--syn-str); }
+.code .num { color: var(--syn-num); }
+.code .com { color: var(--syn-com); font-style: italic; }
+.code .prompt { color: var(--accent); }
+
+/* ---- The eligibility checker -------------------------------------------- */
+
+.elig { display: grid; gap: var(--s-5); }
+@media (min-width: 52rem) { .elig { grid-template-columns: 1fr 1fr; } }
+
+.elig__weeks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-3);
+}
+.elig__w label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  color: var(--ink-3);
+  margin-bottom: var(--s-1);
+}
+.elig__w input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: var(--t-0);
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-2);
+  background: var(--paper);
+  color: var(--ink);
+  text-align: center;
+}
+.elig__w input:focus-visible { border-color: var(--accent); }
+.elig__w--fail input { border-color: var(--syn-num); background: color-mix(in oklab, var(--syn-num) 8%, var(--paper)); }
+
+.verdicts { display: grid; gap: var(--s-3); }
+.verdict {
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ink-3);
+  border-radius: var(--radius-2);
+  padding: var(--s-4);
+  background: var(--paper);
+}
+.verdict--ok { border-left-color: var(--syn-str); }
+.verdict--no { border-left-color: var(--syn-num); }
+.verdict h4 {
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  margin-bottom: var(--s-2);
+}
+.verdict p { margin: 0; font-size: var(--t--1); max-width: none; }
+.verdict b { font-family: var(--font-mono); }
+.verdict--ok b { color: var(--syn-str); }
+.verdict--no b { color: var(--syn-num); }
+
+.elig__sct {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--font-mono);
+  font-size: var(--t--1);
+  margin-top: var(--s-4);
+  padding-top: var(--s-4);
+  border-top: 1px dashed var(--rule);
+}
+.elig__sct input { accent-color: var(--accent); width: 1.05rem; height: 1.05rem; }
