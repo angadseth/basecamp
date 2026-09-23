@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mathematics for Data Science 1 (BSMA1001) — Basecamp</title>
+<meta name="description" content="What Maths 1 actually asks, its twelve weeks including the graph theory nobody expects, the grading formula now that GAA is zero, where marks are lost, and every resource worth opening.">
+<meta name="author" content="Angad Jangir">
+<meta name="theme-color" content="#fbfaf7">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mathematics for Data Science 1 — Basecamp">
+<meta property="og:description" content="Twelve weeks, 186 lectures, and a hard left turn into graph theory in week 10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=STIX+Two+Text:ital,wght@0,400..700;1,400..600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("basecamp.theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="../assets/site/tokens.css">
+<link rel="stylesheet" href="../assets/site/layout.css">
+<link rel="stylesheet" href="../assets/site/components.css">
+<link rel="stylesheet" href="../assets/site/subject.css">
+<link rel="stylesheet" href="../assets/subjects/maths1.css">
+</head>
+<body class="subj subj--maths1">
+<a class="skip" href="#main">Skip to the guide</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../" aria-label="Basecamp, the hub">
+      <svg class="brand__mark" viewBox="0 0 64 64" aria-hidden="true">
+        <g fill="none" stroke="var(--ink-3)" stroke-width="2.4">
+          <path d="M32 58c14 0 24-7 24-14S46 30 32 30 8 37 8 44s10 14 24 14Z"/>
+          <path d="M32 47c8 0 14-4 14-7s-6-7-14-7-14 4-14 7 6 7 14 7Z"/>
+        </g>
+        <path d="M32 6v28" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M32 7l16 6-16 6z" fill="var(--accent)"/>
+      </svg>
+      <span class="brand__name">Basecamp</span>
+    </a>
+    <span class="brand__ed">01 · Mathematics for Data Science 1</span>
+    <nav class="top__links" aria-label="Site">
+      <a class="btn" href="../#subjects"><span class="btn__label">All eight</span></a>
+      <button class="btn" id="theme-btn" type="button" aria-label="Change colour theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 2v14a7 7 0 0 1 0-14z"/></svg>
+        <span id="theme-txt">Auto</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="shero">
+  <div class="wrap shero__inner">
+    <div>
+      <a class="shero__up" href="../">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Basecamp
+      </a>
+      <p class="shero__code">BSMA1001 · 4 credits · Foundation</p>
+      <h1 class="shero__title">Mathematics for<br>Data Science 1</h1>
+      <p class="shero__lede">
+        Nine weeks of school algebra and calculus, rebuilt properly — and then,
+        in week 10, the course <b>changes subject entirely</b> and becomes a graph
+        theory course. Almost nobody sees it coming.
+      </p>
+      <dl class="facts">
+        <div><dt>Lectures</dt><dd>186 <small>· 48 h</small></dd></div>
+        <div><dt>Prerequisite</dt><dd>None</dd></div>
+        <div><dt>Assessed by</dt><dd>2 quizzes + end term</dd></div>
+        <div><dt>Unlocks</dt><dd>Maths 2, Stats 2</dd></div>
+      </dl>
+    </div>
+    <figure class="shero__fig">
+      <canvas id="m1-hero" aria-label="A quadratic curve on graph paper, with its vertex and roots marked."></canvas>
+      <figcaption class="shero__figcap">y = ax² + bx + c · vertex, roots, and the flat tangent</figcaption>
+    </figure>
+  </div>
+</section>
+
+<nav class="toc" aria-label="Chapters">
+  <div class="wrap">
+    <ul class="toc__list">
+      <li><a href="#asks">What it asks</a></li>
+      <li><a href="#map">The twelve weeks</a></li>
+      <li><a href="#quad">Quadratics, live</a></li>
+      <li><a href="#grading">How it is graded</a></li>
+      <li><a href="#loss">Where marks go</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#week1">Your first week</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="chapter" id="asks">
+  <div class="chapter__head">
+    <span class="chapter__no">01</span>
+    <div>
+      <h2 class="chapter__title">What this course actually asks</h2>
+      <span class="chapter__sub">Not "do you know maths" — "can you read a function"</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>
+        Maths 1 is taught by <b>Neelesh Upadhye</b> of the IIT Madras mathematics
+        department and <b>Madhavan Mukund</b>, the director of Chennai Mathematical
+        Institute. That pairing tells you the shape of the course before you open
+        a single lecture: the first nine weeks are a mathematician's rebuild of
+        school algebra and calculus, and the last two are a computer
+        scientist's introduction to graphs and algorithms.
+      </p>
+      <p>
+        The thing the course really tests is whether you can move between the
+        four ways of holding a function: as a rule, as a table, as a graph, and
+        as a description in words. Nearly every exam question is a translation
+        between two of those. "Find the vertex" is graph-to-rule. "A company's
+        profit is modelled by…" is words-to-rule. "Sketch the end behaviour" is
+        rule-to-graph.
+      </p>
+      <div class="note">
+        <p>
+          <strong>If you are coming from a non-maths background</strong>, this is
+          the course that decides whether the rest of the degree feels possible.
+          It is also the most forgiving one to over-prepare for, because
+          everything in weeks 1–6 is available free in a dozen good places.
+        </p>
+      </div>
+      <p>
+        There is no prerequisite. Maths 2 requires it, and Statistics 2 requires
+        it too, so it is the single most load-bearing course in the Foundation
+        level.
+      </p>
+    </div>
+    <aside class="cols__side">
+      <h4>In one line</h4>
+      <p>
+        Functions, from straight lines to logarithms, then calculus on them, then
+        graphs and the algorithms that walk them.
+      </p>
+      <h4>Official books</h4>
+      <p>
+        Three volumes are downloadable from the course page — Sets &amp; Functions,
+        Calculus, and Graph Theory. The prescribed text is Ignacio Bello's
+        <em>Introductory Algebra: a real-world approach</em> (4th edition).
+      </p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="map">
+  <div class="chapter__head">
+    <span class="chapter__no">02</span>
+    <div>
+      <h2 class="chapter__title">The twelve weeks</h2>
+      <span class="chapter__sub">Topics quoted from the official course page</span>
+    </div>
+  </div>
+
+  <p>
+    Three blocks, not one course: <b>weeks 1–6</b> build functions, <b>weeks 7–9</b>
+    do calculus on them, and <b>weeks 10–11</b> are a different subject altogether.
+    The highlighted week is the eligibility cut-off.
+  </p>
+
+  <div class="weeks">
+    <div class="week"><span class="week__n">W1</span><p class="week__t"><b>Set theory.</b> Number system, sets and their operations, relations and functions, relations and their types, functions and their types.</p></div>
+    <div class="week"><span class="week__n">W2</span><p class="week__t"><b>Straight lines.</b> Rectangular coordinate system, slope, parallel and perpendicular lines, representations of a line, general equations, straight-line fit.<span class="week__meta">straight-line fit is regression in disguise — it comes back in Stats 1 and again in the Diploma</span></p></div>
+    <div class="week"><span class="week__n">W3</span><p class="week__t"><b>Quadratic functions.</b> Minima, maxima, vertex and slope; quadratic equations.</p></div>
+    <div class="week"><span class="week__n">W4</span><p class="week__t"><b>Polynomials.</b> Addition, subtraction, multiplication and division; algorithms; graphs of polynomials — x-intercepts, multiplicities, end behaviour and turning points.</p></div>
+    <div class="week"><span class="week__n">W5</span><p class="week__t"><b>Functions, properly.</b> Horizontal and vertical line tests, exponential functions, composite functions, inverse functions.</p></div>
+    <div class="week"><span class="week__n">W6</span><p class="week__t"><b>Logarithms.</b> Properties, graphs, exponential equations, logarithmic equations.</p></div>
+    <div class="week week--gate"><span class="week__n">W7</span><p class="week__t"><b>Sequences and limits.</b> Functions of one variable, limits for sequences, limits and continuity.<span class="week__meta">last week that counts toward end-term eligibility</span></p></div>
+    <div class="week"><span class="week__n">W8</span><p class="week__t"><b>Derivatives.</b> Differentiability and the derivative, tangents, critical points, local maxima and minima.</p></div>
+    <div class="week"><span class="week__n">W9</span><p class="week__t"><b>Integrals.</b> Computing areas; the integral of a function of one variable.</p></div>
+    <div class="week"><span class="week__n">W10</span><p class="week__t"><b>Graph theory begins.</b> Representation of graphs, breadth-first search, depth-first search, applications of BFS and DFS, directed acyclic graphs.<span class="week__meta">a completely different subject — budget real time for it</span></p></div>
+    <div class="week"><span class="week__n">W11</span><p class="week__t"><b>Graph algorithms.</b> Longest path, transitive closure, matrix multiplication, single-source shortest paths, minimum cost spanning trees.</p></div>
+    <div class="week"><span class="week__n">W12</span><p class="week__t"><b>Revision.</b></p></div>
+  </div>
+
+  <div class="callout callout--warn">
+    <p class="callout__head">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v5M12 17h.01M10.3 3.9 1.8 18.1A2 2 0 0 0 3.5 21h17a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z"/></svg>
+      Weeks 11 and 12 are a trap
+    </p>
+    <p>
+      Neither counts toward eligibility, so people stop after week 10 and revise.
+      Both are in the end term — the grading document says so explicitly, and
+      graph algorithms are the easiest marks in the paper if you have seen them
+      once. Do them.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="quad">
+  <div class="chapter__head">
+    <span class="chapter__no">03</span>
+    <div>
+      <h2 class="chapter__title">Week 3, made movable</h2>
+      <span class="chapter__sub">The three questions the exam asks about every quadratic</span>
+    </div>
+  </div>
+
+  <p>
+    Every quadratic question in Maths 1 is one of three: where is the vertex,
+    where are the roots, and which way does it open. Drag the coefficients until
+    you can predict all three before the graph redraws.
+  </p>
+
+  <div class="widget">
+    <div class="widget__head">
+      <h3>y = ax² + bx + c</h3>
+      <span class="widget__hint">drag a, b and c</span>
+    </div>
+    <div class="widget__body">
+      <canvas id="m1-quad" height="340" aria-label="An interactive quadratic graph"></canvas>
+      <div class="widget__controls">
+        <div>
+          <label for="m1-a">a = <output id="m1-a-out">0.5</output></label>
+          <input type="range" id="m1-a" min="-30" max="30" step="1" value="5">
+        </div>
+        <div>
+          <label for="m1-b">b = <output id="m1-b-out">-1</output></label>
+          <input type="range" id="m1-b" min="-60" max="60" step="1" value="-10">
+        </div>
+        <div>
+          <label for="m1-c">c = <output id="m1-c-out">-3</output></label>
+          <input type="range" id="m1-c" min="-60" max="60" step="1" value="-30">
+        </div>
+      </div>
+      <p class="widget__read" id="m1-read"></p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p>
+      <strong>The one fact worth memorising:</strong> the vertex sits at
+      <span class="mono">x = −b / 2a</span>, and the discriminant
+      <span class="mono">b² − 4ac</span> tells you the number of real roots before
+      you solve anything. Set a to 0 with the slider and watch what the course
+      calls a quadratic stop being one.
+    </p>
+  </div>
+</section>
+
+<section class="chapter" id="grading">
+  <div class="chapter__head">
+    <span class="chapter__no">04</span>
+    <div>
+      <h2 class="chapter__title">How it is graded</h2>
+      <span class="chapter__sub">May 2026 grading document · confirm against your course page</span>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div>
+      <p>Two quizzes and one end term. Your weekly assignments are worth nothing directly.</p>
+
+      <div class="formula">
+        T = max( <b>0.6</b>F + <b>0.3</b>·max(Qz1, Qz2),
+                 &nbsp;<b>0.45</b>F + <b>0.25</b>Qz1 + <b>0.3</b>Qz2 )
+      </div>
+
+      <p>
+        A quiz you did not attempt counts as 0, which is why the first branch
+        exists: one strong quiz and a strong end term still gets you 90% of the
+        available marks. If you write both quizzes, the second branch usually
+        wins — and notice that <b>Quiz 2 is weighted higher than Quiz 1</b>.
+      </p>
+
+      <h3>The eligibility gate</h3>
+      <p>To be allowed into the end term hall, both of these must hold:</p>
+      <ul>
+        <li>the average of your <b>best 5 of 8</b> — the first seven weekly
+          assignments plus Mock Quiz 1 — is <b>40/100 or more</b>;</li>
+        <li>you attended <b>at least one</b> of the two quizzes.</li>
+      </ul>
+      <p>
+        Mock Quiz 1 shows up in your dashboard as "Mock Assignment", which
+        confuses people every single term.
+      </p>
+
+      <div class="callout">
+        <p class="callout__head">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4M12 16h.01"/><circle cx="12" cy="12" r="9"/></svg>
+          GAA is zero, and that is not good news
+        </p>
+        <p>
+          Foundation used to give you free marks for weekly assignments. It does
+          not any more. Instead, <b>10 marks of questions in the quizzes and end
+          term are drawn from the assignments</b> — so the work is still on the
+          exam, just without the safety net.
+        </p>
+      </div>
+    </div>
+    <aside class="cols__side">
+      <h4>Sep 2026 dates</h4>
+      <p>
+        Quiz 1 — 15 Nov 2026<br>
+        Quiz 2 — 5 Dec 2026 <em>(a Saturday)</em><br>
+        End term — 10 Jan 2027
+      </p>
+      <h4>No make-up</h4>
+      <p>
+        There is no make-up quiz. Miss one and it is a zero that the formula has
+        to work around.
+      </p>
+      <h4>Try the numbers</h4>
+      <p><a href="../#rules">The calculator on the hub</a> uses this exact formula.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="chapter" id="loss">
+  <div class="chapter__head">
+    <span class="chapter__no">05</span>
+    <div>
+      <h2 class="chapter__title">Where the marks actually go</h2>
+      <span class="chapter__sub">My read, from this course and from what people ask about</span>
+    </div>
+  </div>
+
+  <div class="lossbox">
+    <div class="loss">
+      <span class="loss__n">01</span>
+      <h4>Treating week 10 as optional</h4>
+      <p>
+        Graph theory arrives with no warning and looks like it belongs to a
+        different degree. It is also the most self-contained block in the course:
+        BFS and DFS can be learned properly in an evening, and the questions on
+        them are mechanical.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">02</span>
+      <h4>Reading graphs instead of computing them</h4>
+      <p>
+        "Sketch the end behaviour", "how many turning points", "which
+        multiplicity" — week 4 is nearly all visual reasoning. People who only
+        practise solving equations lose these marks without knowing why.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">03</span>
+      <h4>Logarithm properties, under time pressure</h4>
+      <p>
+        Week 6 is where careless slips cost most: log(a + b) is not log a + log b,
+        and changing base is not optional. These are one-line mistakes inside
+        four-line questions.
+      </p>
+    </div>
+    <div class="loss">
+      <span class="loss__n">04</span>
+      <h4>Stopping the week-7 assignments once eligible</h4>
+      <p>
+        Eligibility is decided on the best 5 of your first 7 weeks. Once people
+        clear it, weekly practice drops — and weeks 8 to 11, which carry the
+        harder end-term questions, get the least practice of all.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="chapter" id="resources">
+  <div class="chapter__head">
+    <span class="chapter__no">06</span>
+    <div>
+      <h2 class="chapter__title">Everything worth opening</h2>
+      <span class="chapter__sub">Official first, then the free things that genuinely help</span>
+    </div>
+  </div>
+
+  <p>
+    Every link here was opened and checked on 23 September 2026. There are no
+    assignment solutions on this list, and there never will be.
+  </p>
+
+  <h3>Official</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://study.iitm.ac.in/ds/course_pages/BSMA1001.html">
+      <span class="res__kind res__kind--official">Course page</span>
+      <span class="res__body"><span class="res__name">BSMA1001 on study.iitm.ac.in</span>
+      <span class="res__why">The week list, the instructors, and the three downloadable volumes — Sets &amp; Functions, Calculus, Graph Theory.</span></span>
+      <span class="res__meta">the source of truth</span></a></li>
+    <li><a class="res" href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBZYDZo9A0pZ_i0xhstrk5cR">
+      <span class="res__kind res__kind--official">Lectures</span>
+      <span class="res__body"><span class="res__name">Mathematics for Data Science 1 — full playlist</span>
+      <span class="res__why">All 186 official lectures in order, on the programme's own channel.</span></span>
+      <span class="res__meta">186 · 48 h</span></a></li>
+  </ul>
+
+  <h3>For the algebra half (weeks 1–6)</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://openstax.org/details/books/college-algebra-2e">
+      <span class="res__kind">Free book</span>
+      <span class="res__body"><span class="res__name">OpenStax · College Algebra</span>
+      <span class="res__why">Free, properly edited, and covers weeks 1–6 almost chapter for chapter. Exercises with answers.</span></span>
+      <span class="res__meta">PDF · web</span></a></li>
+    <li><a class="res" href="https://www.khanacademy.org/math/algebra">
+      <span class="res__kind">Practice</span>
+      <span class="res__body"><span class="res__name">Khan Academy · Algebra</span>
+      <span class="res__why">Use it for drills, not for theory. The mastery exercises are the fastest way to find the gap you actually have.</span></span>
+      <span class="res__meta">free</span></a></li>
+    <li><a class="res" href="https://www.desmos.com/calculator">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">Desmos graphing calculator</span>
+      <span class="res__why">Type the function, add sliders for the coefficients, and watch. Weeks 3 to 6 become obvious once you have seen them move.</span></span>
+      <span class="res__meta">browser</span></a></li>
+  </ul>
+
+  <h3>For the calculus half (weeks 7–9)</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">
+      <span class="res__kind">Video</span>
+      <span class="res__body"><span class="res__name">3Blue1Brown · Essence of calculus</span>
+      <span class="res__why">Watch this before week 8, not after. It gives you the picture the derivative rules are shorthand for.</span></span>
+      <span class="res__meta">12 videos</span></a></li>
+    <li><a class="res" href="https://tutorial.math.lamar.edu/Classes/CalcI/CalcI.aspx">
+      <span class="res__kind">Notes</span>
+      <span class="res__body"><span class="res__name">Paul's Online Math Notes · Calculus I</span>
+      <span class="res__why">The best free worked-example set on limits, derivatives and integrals. Practice problems come with full solutions.</span></span>
+      <span class="res__meta">free</span></a></li>
+  </ul>
+
+  <h3>For the graph theory (weeks 10–11)</h3>
+  <ul class="reslist">
+    <li><a class="res" href="https://visualgo.net/en/dfsbfs">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">VisuAlgo · BFS and DFS</span>
+      <span class="res__why">Step through both traversals on a graph you draw yourself. Twenty minutes here beats an hour of re-watching.</span></span>
+      <span class="res__meta">browser</span></a></li>
+    <li><a class="res" href="https://visualgo.net/en/mst">
+      <span class="res__kind">Tool</span>
+      <span class="res__body"><span class="res__name">VisuAlgo · Minimum spanning tree</span>
+      <span class="res__why">Kruskal and Prim, animated. Week 11's spanning-tree questions stop being memory work.</span></span>
+      <span class="res__meta">browser</span></a></li>
+  </ul>
+</section>
+
+<section class="chapter" id="week1">
+  <div class="chapter__head">
+    <span class="chapter__no">07</span>
+    <div>
+      <h2 class="chapter__title">What to do in week one</h2>
+      <span class="chapter__sub">Term starts 2 October 2026</span>
+    </div>
+  </div>
+
+  <ol class="plan">
+    <li><b>Download the three volumes</b>Get them off the course page on day one, before you need them. Sets &amp; Functions covers weeks 1–6, Calculus covers 7–9, Graph Theory covers 10–11.</li>
+    <li><b>Do the week 1 assignment the day it opens</b>Deadlines never move, and the first seven weeks are the only ones that decide whether you can sit the end term.</li>
+    <li><b>Find and do Mock Quiz 1</b>It counts as one of the eight scores in your eligibility average, and it is the cheapest of the eight to score well on.</li>
+    <li><b>Open Desmos alongside every lecture from week 2</b>Plot what the lecture is describing. The course is about reading functions; reading them on a screen is the practice.</li>
+    <li><b>Put weeks 10 and 11 in your calendar now</b>Block real hours for graph theory in advance, so that it does not arrive as a surprise during quiz-two revision.</li>
+    <li><b>Check your course page's grading section</b>Everything here is from the May 2026 document. The September 2026 one was not published when this was written.</li>
+  </ol>
+
+  <nav class="pager">
+    <a href="../">
+      <span>← Back to</span>
+      <b>All eight courses</b>
+    </a>
+    <a href="../english1/">
+      <span>Next in the pathway →</span>
+      <b>English 1</b>
+    </a>
+  </nav>
+</section>
+
+</div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <p class="foot__made">Basecamp</p>
+      <p>The Foundation-level field guide for the IIT&nbsp;Madras BS in Data Science and Applications.<br>Made by Angad Jangir.</p>
+    </div>
+    <div>
+      <h4>This course</h4>
+      <ul>
+        <li><a href="https://study.iitm.ac.in/ds/course_pages/BSMA1001.html">Official course page</a></li>
+        <li><a href="https://www.youtube.com/playlist?list=PLZ2ps__7DhBZYDZo9A0pZ_i0xhstrk5cR">Lecture playlist</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Basecamp</h4>
+      <ul>
+        <li><a href="../#subjects">All eight courses</a></li>
+        <li><a href="../#rules">How Foundation is graded</a></li>
+        <li><a href="../#term">Sep 2026 dates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Checked</h4>
+      <ul>
+        <li>23 September 2026</li>
+        <li><a href="../docs/sources.html">Where every fact came from</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+<script src="../assets/js/grapher.js"></script>
+</body>
+</html>
