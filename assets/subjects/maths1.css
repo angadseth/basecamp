@@ -1,0 +1,106 @@
+/* Mathematics for Data Science 1 — the Cartesian plane.
+   The page is graph paper. Ideas are plotted on it: the accent is the colour
+   of a drawn curve, and every rule in the page is a grid line. */
+
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "STIX Two Text", ui-serif, Cambria, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --paper: #fbfaf7;
+  --paper-2: #f4f3ee;
+  --paper-3: #eceae2;
+  --ink: #171a22;
+  --ink-2: #414755;
+  --ink-3: #737b8c;
+  --rule: #d8d9de;
+  --rule-soft: #e6e7ea;
+
+  --accent: #4b46c4;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2e1f7;
+  --trace: #8d8fb5;
+
+  /* the second plotted colour — used only inside figures, never in prose */
+  --curve-2: #c81d6a;
+
+  --grid-fine: rgb(75 70 196 / 0.055);
+  --grid-bold: rgb(75 70 196 / 0.11);
+
+  --subject-accent: var(--accent);
+  --subject-trace: var(--trace);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0e0f16;
+    --paper-2: #14161f;
+    --paper-3: #1b1e29;
+    --ink: #e8e8f2;
+    --ink-2: #b0b2c4;
+    --ink-3: #7d8093;
+    --rule: #292c39;
+    --rule-soft: #1f2230;
+
+    --accent: #8f8bf0;
+    --accent-ink: #0c0b1b;
+    --accent-soft: #23214a;
+    --trace: #6e70a0;
+    --curve-2: #ff5c9d;
+
+    --grid-fine: rgb(143 139 240 / 0.055);
+    --grid-bold: rgb(143 139 240 / 0.10);
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0e0f16;
+  --paper-2: #14161f;
+  --paper-3: #1b1e29;
+  --ink: #e8e8f2;
+  --ink-2: #b0b2c4;
+  --ink-3: #7d8093;
+  --rule: #292c39;
+  --rule-soft: #1f2230;
+
+  --accent: #8f8bf0;
+  --accent-ink: #0c0b1b;
+  --accent-soft: #23214a;
+  --trace: #6e70a0;
+  --curve-2: #ff5c9d;
+
+  --grid-fine: rgb(143 139 240 / 0.055);
+  --grid-bold: rgb(143 139 240 / 0.10);
+}
+
+/* The graph paper itself: 8px squares, every fifth line darker. */
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-bold) 1px, transparent 1px),
+    linear-gradient(var(--grid-fine) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-fine) 1px, transparent 1px);
+  background-size: 96px 96px, 96px 96px, 24px 24px, 24px 24px;
+  background-position: -1px -1px;
+}
+
+/* Opaque surfaces sit on top of the paper, so text never fights the grid. */
+.top, .toc { background: color-mix(in oklab, var(--paper) 90%, transparent); }
+.shero__fig, .widget, .ticket, .calc, .callout, .loss, .res, .week, .ledger__cell,
+table.data, .strip__cell, .plan li { background-color: var(--paper); }
+.callout, .plan li, .widget__head, .calc__head { background-color: var(--paper-2); }
+
+/* Headings get the mono-ish geometry of axis labels. */
+.shero__title, .chapter__title { letter-spacing: -0.04em; }
+
+/* Links read like plotted points: a small square rather than an underline. */
+.chapter a[href^="http"] {
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--accent) 45%, transparent);
+}
+.chapter a[href^="http"]:hover { border-bottom-color: var(--accent); }
+
+/* Figure colours used by grapher.js */
+.fig-axis { stroke: var(--ink-3); }
+.fig-curve { stroke: var(--accent); }
+.fig-curve-2 { stroke: var(--curve-2); }
